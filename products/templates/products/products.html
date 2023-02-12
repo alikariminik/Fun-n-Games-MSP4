@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row pt-5">
+        <div class="col text-center">
+            <h1>All Toys</h1>
+            <hr class="w-100 mb-1 my-auto">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div class="row mt-1 mb-2"></div>
+            <div class="row"  max-height="40" max-width="30">
+                {% for product in products %}
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-2 pb-5">
+                    <div class="card product-box">
+                        {% if product.image_url %}
+                        <div class="image-container px-1">
+                            <a href="">
+                                <img src="{{ product.image_url }}" class="card-img-top img-fluid"
+                                    alt="{{ product.name }}">
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="image-container">
+                            <a href="">
+                                <img src="{{ product.image_url }}" class="card-img-top img-fluid"
+                                    alt="{{ product.name }}">
+                            </a>
+                        </div>
+                        {% endif %}
+                        <a class="text-decoration-none text-black cat" href="">
+                            <div class="card-body my-card-body" id="div-text">
+                                <a class="text-decoration-none text-black" href="">
+                                <h5 style="text-overflow: ellipsis;">{{ product.name }}</h5>
+                            </div>
+                        </a>
+                        <div class="card-footer my-card-footer">
+                            <div class="row">
+                                <div class="col product-price-footer">
+                                    <p>£{{ product.price }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="">
+                                        <a href="#" type="button" class="btn btn-warning"><i
+                                                class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Basket</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %} 
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
