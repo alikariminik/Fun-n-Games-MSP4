@@ -38,7 +38,7 @@
         "name": "stuffed_toys",
         "friendly_name": "Stuffed Animals & Plush Toys"
       }
-    }
+    },
     {
         "pk": 6,
         "model": "products.category",
@@ -46,5 +46,5 @@
           "name": "toy_figures",
           "friendly_name": "Toy Figures & Playsets"
         }
-      }
+    }
 ]
