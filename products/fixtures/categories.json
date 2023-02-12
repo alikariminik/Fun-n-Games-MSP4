@@ -1,0 +1,50 @@
+[
+    {
+      "pk": 1,
+      "model": "products.category",
+      "fields": {
+        "name": "arts_crafts",
+        "friendly_name": "Arts & Crafts"
+      }
+    },
+    {
+      "pk": 2,
+      "model": "products.category",
+      "fields": {
+        "name": "building_toys",
+        "friendly_name": "Building Toys"
+      }
+    },
+    {
+      "pk": 3,
+      "model": "products.category",
+      "fields": {
+        "name": "dolls_accessories",
+        "friendly_name": "Dolls & Accessories"
+      }
+    },
+    {
+      "pk": 4,
+      "model": "products.category",
+      "fields": {
+        "name": "puzzles",
+        "friendly_name": "Puzzles"
+      }
+    },
+    {
+      "pk": 5,
+      "model": "products.category",
+      "fields": {
+        "name": "stuffed_toys",
+        "friendly_name": "Stuffed Animals & Plush Toys"
+      }
+    }
+    {
+        "pk": 6,
+        "model": "products.category",
+        "fields": {
+          "name": "toy_figures",
+          "friendly_name": "Toy Figures & Playsets"
+        }
+      }
+]
