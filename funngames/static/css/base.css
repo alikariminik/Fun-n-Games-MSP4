@@ -1,3 +1,17 @@
 html{
     height:100%
 }
+
+/* Navbar */
+.nav > li{
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.nav > li > i{
+    size:50px;
+}
+
+.top-nav-bg{
+    background-color: #FFD100; 
+} 
