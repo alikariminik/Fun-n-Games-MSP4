@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row pt-5">
+        <div class="col text-center">
+            <h3>All Toys</h3>
+            <hr class="w-100 mb-1 my-auto">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div class="row mt-1 mb-2">
+                <div class="col-sm-12 col-md-6 col-lg-4 mt-2 pb-5">
+                    <div class="image-container">
+                        {% if product.image.url %}
+                        <div class="image-container px-1">
+                            <a href="">
+                                <img src="{{ product.image_url }}" class="card-img-top img-fluid"
+                                    alt="{{ product.name }}">
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="image-container">
+                            <a>
+                                <img src="{{ product.image_url }}" class="card-img-top img-fluid"
+                                    alt="{{ product.name }}">
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4 mt-2 pb-5">
+                    <div class="container-fluid pt-5">
+                        <h5>{{ product.name }}</h5>
+                        <hr>
+                        <p>{{ product.details }}</p>
+                        <p>{{ product.product_description }}</p>
+                        <h6>£{{ product.price }}</h6>
+                        <div class="">
+                            <a href="#" type="button" class="btn btn-warning"><i
+                                    class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Basket</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

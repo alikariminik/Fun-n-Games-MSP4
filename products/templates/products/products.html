@@ -26,22 +26,22 @@
                     <div class="card product-box">
                         {% if product.image_url %}
                         <div class="image-container px-1">
-                            <a href="">
+                            <a href="{% url 'product_detail' product.id %}">
                                 <img src="{{ product.image_url }}" class="card-img-top img-fluid"
                                     alt="{{ product.name }}">
                             </a>
                         </div>
                         {% else %}
                         <div class="image-container">
-                            <a href="">
+                            <a href="{% url 'product_detail' product_id %}">
                                 <img src="{{ product.image_url }}" class="card-img-top img-fluid"
                                     alt="{{ product.name }}">
                             </a>
                         </div>
                         {% endif %}
-                        <a class="text-decoration-none text-black product-link" href="">
+                        <a class="text-decoration-none text-black cat" href="{% url 'product_detail' product.id %}">
                             <div class="card-body my-card-body" id="div-text">
-                                <a class="text-decoration-none text-black" href="">
+                                <a class="text-decoration-none text-black" href="{% url 'product_detail' product.id %}">
                                 <h5 style="text-overflow: ellipsis;">{{ product.name }}</h5>
                             </div>
                         </a>
