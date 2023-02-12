@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-alikarimini-psychicocto-8vr7cvh85pl.ws-eu86.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-alikarimini-funngamesms-ylyi64ioxyy.ws-eu86.gitpod.io']
 
 # Application definition
 
