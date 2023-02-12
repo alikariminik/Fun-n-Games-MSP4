@@ -1,0 +1,96 @@
+<div class="offcanvas offcanvas-start" tabindex="-1" id="cat" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+        <h4 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-start flex-grow-2 pe-3">
+            <li class="nav-item dropdown pb-1">
+                <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'home' %}"><b>Home</b></a>
+            </li>
+            <li class="nav-item dropdown pb-1">
+                <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <strong>All Products</strong>
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+                    <a href="" class="dropdown-item"> </a>
+                    <a href="" class="dropdown-item "> </a>
+                    <a href="" class="dropdown-item "> </a>
+                    <a href="" class="dropdown-item"> </a>
+                </div>
+            </li>
+      
+            <li class="nav-item dropdown pb-1">
+                <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="clothing-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <strong>Arts & Crafts</strong>
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
+                    <a href="" class="dropdown-item"></a>
+                    <a href="" class="dropdown-item"></a>
+                    <a href="" class="dropdown-item"></a>
+                    <a href="" class="dropdown-item"></a>
+                </div>
+            </li>
+      
+            <li class="nav-item dropdown pb-1">
+                <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="homeware-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <strong>Building Toys</strong>
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
+                    <a href="" class="dropdown-item"> </a>
+                    <a href="" class="dropdown-item"> </a>
+                    <a href="" class="dropdown-item"></a>
+                </div>
+            </li>
+      
+            <li class="nav-item dropdown pb-1">
+                <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <strong>Dolls & Accessories</strong>
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="specials-link">
+                    <a href="" class="dropdown-item"> </a>
+                    <a href="" class="dropdown-item"></a>
+                    <a href="" class="dropdown-item"></a>
+                    <a href="" class="dropdown-item"> </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown pb-1">
+                <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <strong>Puzzles</strong>
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="specials-link">
+                    <a href="" class="dropdown-item"></a>
+                    <a href="" class="dropdown-item"></a>
+                    <a href="" class="dropdown-item"></a>
+                    <a href="" class="dropdown-item"></a>
+                </div>
+            </li>
+            <li class="nav-item dropdown pb-5">
+                <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <strong>Toy Figures & Playsets</strong>
+                </a>
+                <div class="dropdown-menu border-0" aria-labelledby="specials-link">
+                    <a href="" class="dropdown-item"> </a>
+                    <a href="" class="dropdown-item"></a>
+                    <a href="" class="dropdown-item"></a>
+                    <a href="" class="dropdown-item"> </a>
+                </div>
+            </li>
+            <li class="nav-item pt-5">
+                <a class="nav-link" href="#" data-bs-target=account-options data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>My Account</strong></a>
+                <div class="dropdown-menu border-0" aria-labelledby="account-options">
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Product Management</a>
+                        {% endif %}
+                        <a href="" class="dropdown-item">My Profile</a>
+                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                    {% else %}
+                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                    {% endif %}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
