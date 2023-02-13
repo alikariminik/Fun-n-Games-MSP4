@@ -61,3 +61,10 @@ html{
 .product-link:hover, .product-link:focus, .product-link:target {
     text-decoration: underline;
 }
+
+.product-sort-button{
+    display: flex;!important
+    justify-content: end;
+    color: #FFD100;
+
+}
