@@ -1,4 +1,5 @@
 from django.db import models
+from decimal import Decimal
 
 
 class Category(models.Model):
@@ -27,6 +28,22 @@ class Product (models.Model):
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     variants = models.URLField(max_length=1024, null=True, blank=True)
     product_url = models.URLField(max_length=1024, null=True, blank=True)
+    coupon_codes = models.ManyToManyField("products.CouponCode", blank=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_price(self):
+        if self.coupon_codes.all():
+            cc = self.coupon_codes.first()
+            new_price = self.price - (Decimal(cc.percentage/100) * self.price)
+            return new_price
+        return self.price
+
+
+class CouponCode(models.Model):
+    percentage = models.IntegerField()
+    name = models.CharField(max_length=254)
 
     def __str__(self):
         return self.name
