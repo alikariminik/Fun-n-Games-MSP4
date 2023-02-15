@@ -36,7 +36,8 @@ class Product (models.Model):
     def get_price(self):
         if self.coupon_codes.all():
             cc = self.coupon_codes.first()
-            new_price = self.price - (Decimal(cc.percentage/100) * self.price)
+            new_price = self.price - round(
+                (Decimal(cc.percentage/100) * self.price), 2)
             return new_price
         return self.price
 
@@ -44,6 +45,7 @@ class Product (models.Model):
 class CouponCode(models.Model):
     percentage = models.IntegerField()
     name = models.CharField(max_length=254)
+    discount_amount = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
         return self.name
