@@ -11,26 +11,26 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row pt-5">
+    <!-- <div class="row pt-5">
         <div class="col text-center">
             <h3>All Toys</h3>
             <hr class="w-100 mb-1 my-auto">
         </div>
-    </div>
+    </div> -->
     <div class="row">
         <div class="col-10 offset-1">
             <div class="row mt-1 mb-2">
                 <div class="col-sm-12 col-md-6 col-lg-4 mt-2 pb-5">
                     <div class="image-container">
                         {% if product.image.url %}
-                        <div class="image-container px-1">
+                        <div class="image-container prod-image-container-sm px-1">
                             <a href="">
-                                <img src="{{ product.image_url }}" class="card-img-top img-fluid"
+                                <img src="{{ product.image_url }}" class="card-img-top img-fluid "
                                     alt="{{ product.name }}">
                             </a>
                         </div>
                         {% else %}
-                        <div class="image-container">
+                        <div class="image-container prod-image-container-sm">
                             <a>
                                 <img src="{{ product.image_url }}" class="card-img-top img-fluid"
                                     alt="{{ product.name }}">
@@ -39,7 +39,7 @@
                         {% endif %}
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-4 mt-2 pb-5">
+                <div class="col-sm-12 col-md-6 col-lg-4 py-5">
                     <div class="container-fluid pt-5">
                         <h5>{{ product.name }}</h5>
                         <hr>
@@ -47,15 +47,12 @@
                         <p>{{ product.product_description }}</p>
 
                         {% if product.get_price == product.price %}
-                        <p><strong style="font-size:x-large;">&nbsp;&nbsp;£{{ product.get_price }}</strong></p>
+                        <p><strong style="font-size:x-large;">&nbsp;£{{ product.get_price }}</strong></p>
                         {% else %}
                             <p><small>Was:&nbsp;<del>£ {{ product.price }} {{ discount.discount_amount }}</small></del>
                             <strong style="font-size:x-large;">&nbsp;&nbsp;£{{ product.get_price }}</strong></p>
                         {% endif %}
-                        <div class="">
-                            <a href="#" type="button" class="btn btn-warning"><i
-                                    class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</a>
-                        </div>
+                        {% include 'includes/add_to_cart.html' %}
                     </div>
                 </div>
             </div>

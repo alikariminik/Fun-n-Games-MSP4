@@ -13,10 +13,7 @@
                     <strong>All Products</strong>
                 </a>
                 <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                    <a href="" class="dropdown-item"> </a>
-                    <a href="" class="dropdown-item "> </a>
-                    <a href="" class="dropdown-item "> </a>
-                    <a href="" class="dropdown-item"> </a>
+                    <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
                 </div>
             </li>
       
@@ -25,10 +22,7 @@
                     <strong>Arts & Crafts</strong>
                 </a>
                 <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                    <a href="" class="dropdown-item"></a>
-                    <a href="" class="dropdown-item"></a>
-                    <a href="" class="dropdown-item"></a>
-                    <a href="" class="dropdown-item"></a>
+                    <a href="{% url 'products' %}?category=arts_crafts" class="dropdown-item">Test</a>
                 </div>
             </li>
       
@@ -37,9 +31,7 @@
                     <strong>Building Toys</strong>
                 </a>
                 <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
-                    <a href="" class="dropdown-item"> </a>
-                    <a href="" class="dropdown-item"> </a>
-                    <a href="" class="dropdown-item"></a>
+                    <a href="{% url 'products' %}?category=building_toys" class="dropdown-item">Test</a>
                 </div>
             </li>
       
@@ -48,10 +40,7 @@
                     <strong>Dolls & Accessories</strong>
                 </a>
                 <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                    <a href="" class="dropdown-item"> </a>
-                    <a href="" class="dropdown-item"></a>
-                    <a href="" class="dropdown-item"></a>
-                    <a href="" class="dropdown-item"> </a>
+                    <a href="{% url 'products' %}?category=dolls_accessories" class="dropdown-item">Test</a>
                 </div>
             </li>
             <li class="nav-item dropdown pb-1">
@@ -59,10 +48,7 @@
                     <strong>Puzzles</strong>
                 </a>
                 <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                    <a href="" class="dropdown-item"></a>
-                    <a href="" class="dropdown-item"></a>
-                    <a href="" class="dropdown-item"></a>
-                    <a href="" class="dropdown-item"></a>
+                    <a href="{% url 'products' %}?category=puzzles" class="dropdown-item">Test</a>
                 </div>
             </li>
             <li class="nav-item dropdown pb-5">
@@ -70,11 +56,7 @@
                     <strong>Toy Figures & Playsets</strong>
                 </a>
                 <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                    <a href="" class="dropdown-item"> </a>
-                    <a href="" class="dropdown-item"></a>
-                    <a href="" class="dropdown-item"></a>
-                    <a href="" class="dropdown-item"> </a>
-                </div>
+                    <a href="{% url 'products' %}?category=stuffed_toys" class="dropdown-item">Test</a>                </div>
             </li>
             <li class="nav-item pt-5">
                 <a class="nav-link" href="#" data-bs-target=account-options data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>My Account</strong></a>
