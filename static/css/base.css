@@ -62,9 +62,20 @@ html{
     text-decoration: underline;
 }
 
-.product-sort-button{
-    display: flex;!important
-    justify-content: end;
-    color: #FFD100;
+#logo{
+    width:90px;
+    height:90px;
+}
 
+@media (max-width: 577px) {
+    #logo{
+        width:45px;
+        height:45px;
+    }
+    .image-container{
+        height: 280px;
+    }
+    .prod-image-container-sm{
+        height: 280px;
+    }
 }
