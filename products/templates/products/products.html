@@ -18,7 +18,10 @@
         </div>
     </div>
     <div class="row w-100">
-        <div class="col ">
+        <div class="col-sm-6 justify-content-start" style="display: flex; padding-left: 20px;">
+            {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+        </div>
+        <div class="col-sm-6 justify-content-end" style="display: flex; padding-right: 20px;">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-sharp fa-solid fa-arrow-down-short-wide"></i> &nbsp; Sort
@@ -68,7 +71,7 @@
                                 <div class="col">
                                     <div class="">
                                         <a href="#" type="button" class="btn btn-warning"><i
-                                                class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Basket</a>
+                                                class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</a>
                                     </div>
                                 </div>
                             </div>
