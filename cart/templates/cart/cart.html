@@ -17,15 +17,35 @@
             <hr class="w-100 mb-1 my-auto">
         </div>
     </div>
+</div>
+{% if cart_items %}
 <!-- Cart Item Summary -->
-    <div class="row">
-        <div class="col-sm-12 col-md-8">
+<div class="row">
+    <div class="col-sm-12 col-md-8">
 
+    </div>
+    <!-- Cart Sub-Total -->
+    <div class="col-sm-12 col-md-4">
+
+    </div>
+</div>
+
+{% else %}
+<div class="row">
+    <div class="col justify-content-center" style="display: flex;">
+        <h3 class="pt-5 font-weight-bold">No Fun - Your Cart is Empty!</h3>
+    </div>
+    <div class="row pt-5">
+        <div class="col justify-content-center" style="display: flex;">
+            <i class="fa-regular fa-face-sad-tear fa-2xl"></i>
         </div>
-<!-- Cart Sub-Total -->
-        <div class="col-sm-12 col-md-4">
-            
+    </div>
+    <div class="row pt-5">
+        <div class="col justify-content-center" style="display: flex;">
+            <a type="button" class="btn btn-info" href="{% url 'products' %}">Back to Store <i class="fa-solid fa-shop"></i></a>
         </div>
     </div>
 </div>
+{% endif %}
+
 {% endblock %}
