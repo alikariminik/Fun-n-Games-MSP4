@@ -14,7 +14,7 @@ def cart_contents(request):
     for product_id, quantity in cart.items():
         product = get_object_or_404(Product, pk=product_id)
         if product.get_price == product.price:
-            sub_total += quantity * int(product.price)
+            sub_total += quantity * product.price
             product_count += quantity
             cart_items.append({
                 'product_id': product_id,
@@ -28,7 +28,8 @@ def cart_contents(request):
             cart_items.append({
                 'product_id': product_id,
                 'quantity': quantity,
-                'products': product,
+                'product': product,
+                'sale_price': sale_price,
             })
 
     if sub_total < settings.FREE_DELIVERY:

@@ -13,7 +13,7 @@
 <div class="container-fluid mt-2">
     <div class="row pt-5">
         <div class="col text-center">
-            <h1>Your Cart</h1>
+            <h1>Your Cart</h1> {{ cart_items }}
             <hr class="w-100 mb-1 my-auto">
         </div>
     </div>
@@ -21,11 +21,38 @@
 {% if cart_items %}
 <!-- Cart Item Summary -->
 <div class="row">
-    <div class="col-sm-12 col-md-8">
-        {{ cart_items }}
+    <div class="col">
+        <div class="table-responsive rounded pt-5">
+            <table class="table table-sm table-borderless">
+                {% for item in cart_items %}
+                <tr class="pt-3">
+                    <td class="py-5 ps-5 w-25">
+                        <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="150" width="150">
+                    </td>
+                    <td class="py-3">
+                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                    </td>
+                    <td class="py-3">
+                        {% if item.product.get_price == item.product.price %}
+                        <p class="my-0">£{{ item.product.price }}</p>
+                        {% else %}
+                        <p>£{{ item.product.get_price }}</p>
+                        <p><small>Was:&nbsp;<del>£ {{ item.product.price }} </small></del>
+                        {% endif %}
+                    </td>
+                    <td class="py-3 w-25">
+                        <p class="my-0">{{ item.quantity }}</p>
+                    </td>
+                    <td class="py-3">
+                        total for that product
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
     <!-- Cart Sub-Total -->
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-5">
 
     </div>
 </div>
