@@ -22,11 +22,11 @@
 <!-- Cart Item Summary -->
 <div class="row">
     <div class="col">
-        <div class="table-responsive rounded pt-5">
+        <div class="table-responsive rounded pt-5 mx-md-5">
             <table class="table table-sm table-borderless">
                 {% for item in cart_items %}
                 <tr class="pt-3">
-                    <td class="py-5 ps-5 w-25">
+                    <td class="py-5 ps-2 w-25">
                         <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="150" width="150">
                     </td>
                     <td class="py-3">
@@ -34,10 +34,10 @@
                     </td>
                     <td class="py-3">
                         {% if item.product.get_price == item.product.price %}
-                        <p class="my-0">£{{ item.product.price }}</p>
+                        <span><p class="my-0">£{{ item.product.price }}</p></span>
                         {% else %}
-                        <p>£{{ item.product.get_price }}</p>
-                        <p><small>Was:&nbsp;<del>£ {{ item.product.price }} </small></del>
+                        <span class="text-danger"><b>£{{ item.product.get_price }}</b></span>
+                        <span class="text-secondary"><del>£{{ item.product.price }}</del></span>
                         {% endif %}
                     </td>
                     <td class="py-3 w-25">

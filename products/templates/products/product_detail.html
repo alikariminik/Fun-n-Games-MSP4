@@ -47,10 +47,15 @@
                         <p>{{ product.product_description }}</p>
 
                         {% if product.get_price == product.price %}
-                        <p><strong style="font-size:x-large;">&nbsp;£{{ product.get_price }}</strong></p>
+                            <p><strong style="font-size:x-large;">&nbsp;£{{ product.get_price }}</strong></p>
                         {% else %}
-                            <p><small>Was:&nbsp;<del>£ {{ product.price }} {{ discount.discount_amount }}</small></del>
-                            <strong style="font-size:x-large;">&nbsp;&nbsp;£{{ product.get_price }}</strong></p>
+                            <span class="text-danger"><strong style="font-size:x-large;">£{{ product.get_price }}</strong></span>
+                            <span class="text-secondary ">&nbsp;<del>£{{ product.price }}</del>
+                                <span>
+                                    
+                                </span>
+                            </span>
+                                
                         {% endif %}
                         {% include 'includes/add_to_cart.html' %}
                     </div>
