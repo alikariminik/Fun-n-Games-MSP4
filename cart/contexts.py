@@ -9,6 +9,7 @@ def cart_contents(request):
     cart_items = []
     sub_total = 0
     product_count = 0
+    quantity = 0
     cart = request.session.get('cart', {})
 
     for product_id, quantity in cart.items():
@@ -50,6 +51,8 @@ def cart_contents(request):
         'free_delivery': settings.FREE_DELIVERY,
         'total': total,
         'cart': cart,
+        'quantity': quantity,
+        'product_id': product_id,
     }
 
     return context
