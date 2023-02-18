@@ -1,7 +1,7 @@
 <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
     {% csrf_token %}
-    <div class="form-row">
-        <div class="col-12">
+    <div class="form-row pb-sm-5">
+        <div class="col-12 pb-5 pb-1-sm">
             <p class="mt-3"><strong>Quantity:</strong></p>
             <div class="form-group">
                 <div class="input-group">
@@ -10,8 +10,14 @@
             </div>
         </div>
 
-        <div class="col-12 relative-top">
+        <div class="col-12 d-none d-md-block">
             <button type="submit" class="btn btn-warning text-uppercase mt-2" value="Add to Cart"><i
+            class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</button>
+        </div>
+        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+
+        <div class="col-12 d-md-none fixed-bottom w-100">
+            <button type="submit" class="btn btn-warning text-uppercase mt-2 w-100" value="Add to Cart"><i
             class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</button>
         </div>
         <input type="hidden" name="redirect_url" value="{{ request.path }}">

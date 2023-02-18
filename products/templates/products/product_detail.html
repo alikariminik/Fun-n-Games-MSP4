@@ -21,7 +21,7 @@
         <div class="col-10 offset-1">
             <div class="row mt-1 mb-2">
                 <div class="col-sm-12 col-md-6 col-lg-4 mt-2 pb-5">
-                    <div class="image-container">
+                    <div class="image-container mt-sm-3">
                         {% if product.image.url %}
                         <div class="image-container prod-image-container-sm px-1">
                             <a href="">
@@ -39,7 +39,7 @@
                         {% endif %}
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-4 py-5">
+                <div class="col-sm-12 col-md-6 col-lg-4 py-md-5 py-sm-2">
                     <div class="container-fluid pt-5">
                         <h5>{{ product.name }}</h5>
                         <hr>
@@ -52,7 +52,7 @@
                             <span class="text-danger"><strong style="font-size:x-large;">£{{ product.get_price }}</strong></span>
                             <span class="text-secondary ">&nbsp;<del>£{{ product.price }}</del>
                                 <span>
-                                    
+
                                 </span>
                             </span>
                                 
