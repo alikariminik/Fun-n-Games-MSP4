@@ -20,7 +20,8 @@ class Category(models.Model):
 class Product (models.Model):
     uniq_id = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(
+        'Category', null=True, blank=True, on_delete=models.SET_NULL)
     sub_category1 = models.TextField(null=True, blank=True)
     sub_category2 = models.TextField(null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
@@ -29,6 +30,7 @@ class Product (models.Model):
     variants = models.URLField(max_length=1024, null=True, blank=True)
     product_url = models.URLField(max_length=1024, null=True, blank=True)
     coupon_codes = models.ManyToManyField("products.CouponCode", blank=True)
+    deal = models.ManyToManyField("products.Deal", blank=True)
 
     def __str__(self):
         return self.name
@@ -46,6 +48,15 @@ class CouponCode(models.Model):
     percentage = models.IntegerField()
     name = models.CharField(max_length=254)
     discount_amount = models.CharField(max_length=254, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Deal(models.Model):
+    name = models.CharField(max_length=254)
+    eligible_quantity = models.IntegerField()
+    saved_quantity = models.IntegerField()
 
     def __str__(self):
         return self.name
