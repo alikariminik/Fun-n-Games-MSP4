@@ -29,9 +29,11 @@
                     <td class="py-5 ps-2 w-25">
                         <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="150" width="150">
                     </td>
+                    <!-- Product Name -->
                     <td class="py-3">
-                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                        <p class="my-0"><strong>{{ item.product.short_name }}</strong></p>
                     </td>
+                    <!-- Product Price and Sale Prices (if applicable) -->
                     <td class="py-3">
                         {% if item.product.get_price == item.product.price %}
                         <span><p class="my-0">£{{ item.product.price }}</p></span>
@@ -40,6 +42,7 @@
                         <span class="text-secondary"><del>£{{ item.product.price }}</del></span>
                         {% endif %}
                     </td>
+                    <!-- Quantity Control Inputs -->
                     <td class="py-3 w-25">
                         <form class="form update-form" method="POST" action="">
                             {% csrf_token %}
