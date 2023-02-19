@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 def view_cart(request):
     """ A view that renders the cart's contents page page """
 
-    return render(request, 'cart/cart.html')
+    return render(request, 'cart.html')
 
 
 def add_to_cart(request, product_id):

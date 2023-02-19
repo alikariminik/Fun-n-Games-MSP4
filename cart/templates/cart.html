@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-2">
+    <div class="row pt-5">
+        <div class="col text-center">
+            <h1>Your Cart</h1> 
+            <hr class="w-100 mb-1 my-auto">
+        </div>
+    </div>
+</div>
+{% if cart_items %}
+<!-- Cart Item Summary -->
+<div class="row">
+    <div class="col">
+        <div class="table-responsive rounded pt-5 mx-md-5">
+            <table class="table table-sm table-borderless">
+                {% for item in cart_items %}
+                <tr class="pt-3">
+                    <td class="py-5 ps-2 w-25">
+                        <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="150" width="150">
+                    </td>
+                    <td class="py-3">
+                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                    </td>
+                    <td class="py-3">
+                        {% if item.product.get_price == item.product.price %}
+                        <span><p class="my-0">£{{ item.product.price }}</p></span>
+                        {% else %}
+                        <span class="text-danger"><b>£{{ item.product.get_price }}</b></span>
+                        <span class="text-secondary"><del>£{{ item.product.price }}</del></span>
+                        {% endif %}
+                    </td>
+                    <td class="py-3 w-25">
+                        <form class="form update-form" method="POST" action="">
+                            {% csrf_token %}
+                            <div class="form-group w-100">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="decrease-qty btn btn-sm btn-dark rounded-0" 
+                                            data-item_id="{{ item.product.id }}" id="decrease-qty_{{ item.product.id }}">
+                                            <span>
+                                                <i class="fas fa-minus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control form-control-sm qty_input" type="number" 
+                                    name="quantity" value="{{ item.quantity }}" min="1" max="99" 
+                                    data-item_id="{{ item.product.id }}" id="id_qty_{{ item.product.id }}">
+                                    <div class="input-group-append">
+                                        <button class="increase-qty btn btn-sm  btn-warning rounded-0"
+                                            data-item_id="{{ item.product.id }}" 
+                                            id="increase-qty_{{ item.product.id }}">
+                                            <span>
+                                                <i class="fas fa-plus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                        </form>
+                        <a href="#" style="text-decoration: none;" class="remove-qty text-danger" id="remove_{{ item.product.id }}"><small>Remove</small></a>
+                        <a href="#" style="text-decoration: none;" class="update-qty text-info float-end" id="update_{{ item.product.id }}"><small>Update</small></a>
+                    </td>
+                    <td class="py-3">
+                        {{ item.product_sub_total }}                     
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <!-- Cart Sub-Total -->
+    <div class="col-sm-12 col-md-4">
+
+    </div>
+</div>
+
+{% else %}
+<div class="row">
+    <div class="col justify-content-center" style="display: flex;">
+        <h3 class="pt-5 font-weight-bold">No Fun - Your Cart is Empty!</h3>
+    </div>
+    <div class="row pt-5">
+        <div class="col justify-content-center" style="display: flex;">
+            <i class="fa-regular fa-face-sad-tear fa-2xl"></i>
+        </div>
+    </div>
+    <div class="row pt-5">
+        <div class="col justify-content-center" style="display: flex;">
+            <a type="button" class="btn btn-info" href="{% url 'products' %}">Back to Store <i class="fa-solid fa-shop"></i></a>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block postloadjs %}
+{% include 'includes/qty_control.html' %}
+
+<script type="text/javascript">
+    // Update quantity on click
+    $('.update-qty').click(function(e) {
+        var form = $(this).prev('.update-qty');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-qty').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var prodId = $(this).attr('id').split('remove_')[1];
+        var url = `/bag/remove/${prodId}`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+</script>
+{% endblock %}
