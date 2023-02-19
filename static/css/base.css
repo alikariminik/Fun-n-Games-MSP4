@@ -90,6 +90,6 @@ html{
 
 @media (min-width:768px) {
     .mypb{
-        padding-bottom: 1rem !important;
+        padding-bottom: 0.5rem !important;
     }
 }

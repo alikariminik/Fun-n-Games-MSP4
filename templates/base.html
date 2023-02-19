@@ -84,7 +84,8 @@
                     <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
                     <p class="my-0">
                         {% if total %}
-                            ${{ total|floatformat:2 }}
+                            <span>${{ total|floatformat:2 }}</span>
+                            <span><br><smaller>( {{ product_count }} )</small></span>
                         {% else %}
                             $0.00
                         {% endif %}

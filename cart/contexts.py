@@ -52,7 +52,6 @@ def cart_contents(request):
         'total': total,
         'cart': cart,
         'quantity': quantity,
-        'product_id': product_id,
     }
 
     return context
