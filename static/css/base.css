@@ -75,6 +75,11 @@ html{
     padding-bottom: 3rem;
 }
 
+/* Cart */
+#update-qty:hover{
+    cursor: pointer;
+}
+
 @media (max-width: 577px) {
     #logo{
         width:45px;

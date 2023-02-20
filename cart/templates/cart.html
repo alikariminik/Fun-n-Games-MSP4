@@ -24,17 +24,26 @@
     <div class="col">
         <div class="table-responsive rounded pt-5 mx-md-5">
             <table class="table table-sm table-borderless">
+                <thead class="text-black">
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
                 {% for item in cart_items %}
                 <tr class="pt-3">
-                    <td class="py-5 ps-2 w-25">
+                    <td class="py-3 ps-2" width=20%>
                         <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="150" width="150">
                     </td>
                     <!-- Product Name -->
-                    <td class="py-3">
+                    <td class="py-3" width="25%">
                         <p class="my-0"><strong>{{ item.product.short_name }}</strong></p>
                     </td>
                     <!-- Product Price and Sale Prices (if applicable) -->
-                    <td class="py-3">
+                    <td class="py-3" width="10%">
                         {% if item.product.get_price == item.product.price %}
                         <span><p class="my-0">£{{ item.product.price }}</p></span>
                         {% else %}
@@ -43,25 +52,26 @@
                         {% endif %}
                     </td>
                     <!-- Quantity Control Inputs -->
-                    <td class="py-3 w-25">
-                        <form class="form update-form" method="POST" action="">
+                    <td class="py-3" width="35%">
+                        <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.product.id %}">
                             {% csrf_token %}
                             <div class="form-group w-100">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <button class="decrease-qty btn btn-sm btn-dark rounded-0" 
-                                            data-item_id="{{ item.product.id }}" id="decrease-qty_{{ item.product.id }}">
+                                        <button class="decrease-qty btn btn-sm btn-dark rounded-0"
+                                            data-item_id="{{ item.product.id }}"
+                                            id="decrease-qty_{{ item.product.id }}">
                                             <span>
                                                 <i class="fas fa-minus"></i>
                                             </span>
                                         </button>
                                     </div>
-                                    <input class="form-control form-control-sm qty_input" type="number" 
-                                    name="quantity" value="{{ item.quantity }}" min="1" max="99" 
-                                    data-item_id="{{ item.product.id }}" id="id_qty_{{ item.product.id }}">
+                                    <input class="form-control form-control-sm qty_input" type="number" name="quantity"
+                                        value="{{ item.quantity }}" min="1" max="99"
+                                        data-item_id="{{ item.product.id }}" id="id_qty_{{ item.product.id }}">
                                     <div class="input-group-append">
                                         <button class="increase-qty btn btn-sm  btn-warning rounded-0"
-                                            data-item_id="{{ item.product.id }}" 
+                                            data-item_id="{{ item.product.id }}"
                                             id="increase-qty_{{ item.product.id }}">
                                             <span>
                                                 <i class="fas fa-plus"></i>
@@ -69,11 +79,14 @@
                                         </button>
                                     </div>
                                 </div>
+                            </div>
                         </form>
-                        <a href="#" style="text-decoration: none;" class="remove-qty text-danger" id="remove_{{ item.product.id }}"><small>Remove</small></a>
-                        <a href="#" style="text-decoration: none;" class="update-qty text-info float-end" id="update_{{ item.product.id }}"><small>Update</small></a>
+                        <a style="text-decoration: none;" id="update-qty"
+                            class="text-info float-end"><small>Update</small></a>
+                        <a style="text-decoration: none;" class="remove-qty text-danger"
+                            id="remove_{{ item.product.id }}"><small>Remove</small></a>
                     </td>
-                    <td class="py-3">
+                    <td class="py-3" width="10%">
                         <strong>£{{ item.product_sub_total }}</strong>                     
                     </td>
                 </tr>
@@ -112,22 +125,9 @@
 
 <script type="text/javascript">
     // Update quantity on click
-    $('.update-qty').click(function(e) {
-        var form = $(this).prev('.update-qty');
+    $('#update-qty').click(function(e) {
+        var form = $(this).prev('.update-form');
         form.submit();
-    })
-
-    // Remove item and reload on click
-    $('.remove-qty').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var prodId = $(this).attr('id').split('remove_')[1];
-        var url = `/bag/remove/${prodId}`;
-        var data = {'csrfmiddlewaretoken': csrfToken};
-
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
     })
 </script>
 {% endblock %}

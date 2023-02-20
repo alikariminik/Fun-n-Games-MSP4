@@ -37,8 +37,8 @@ class Product (models.Model):
 
     def short_name(self):
         name_length = len(self.name)
-        if name_length > 100:
-            abbreviated_name = self.name[0:100]
+        if name_length > 80:
+            abbreviated_name = self.name[0:79]
             display_name = abbreviated_name + "..."
             return display_name
         return self.name
