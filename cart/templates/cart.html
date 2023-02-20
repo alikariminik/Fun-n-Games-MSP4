@@ -81,10 +81,10 @@
                                 </div>
                             </div>
                         </form>
-                        <a style="text-decoration: none;" id="update-qty"
-                            class="text-info float-end"><small>Update</small></a>
-                        <a style="text-decoration: none;" class="remove-qty text-danger"
-                            id="remove_{{ item.product.id }}"><small>Remove</small></a>
+                        <a style="text-decoration: none;" 
+                            class="text-info float-end update-qty"><small>Update</small></a>
+                        <a  class="remove-qty text-danger"
+                            id="remove_{{ item.product.id }}"><i class="fa-sharp fa-solid fa-xmark"></i></a>
                     </td>
                     <td class="py-3" width="10%">
                         <strong>£{{ item.product_sub_total }}</strong>                     
@@ -125,9 +125,21 @@
 
 <script type="text/javascript">
     // Update quantity on click
-    $('#update-qty').click(function(e) {
+    $('.update-qty').click(function(e) {
         var form = $(this).prev('.update-form');
         form.submit();
+    })
+    $('.remove-qty').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var prodId = $(this).attr('id').split('remove_')[1];
+        var url = `/cart/remove/${prodId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+        console.log(prodId)
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
     })
 </script>
 {% endblock %}

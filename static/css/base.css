@@ -76,7 +76,7 @@ html{
 }
 
 /* Cart */
-#update-qty:hover{
+.update-qty:hover, .remove-qty:hover{
     cursor: pointer;
 }
 
