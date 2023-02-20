@@ -34,7 +34,7 @@ def adjust_cart(request, product_id):
     cart = request.session.get('cart', {})
 
     if quantity > 0:
-        cart[product_id] += quantity
+        cart[product_id] = quantity
     else:
         cart.pop(product_id)
 
