@@ -43,6 +43,14 @@ class Product (models.Model):
             return display_name
         return self.name
 
+    def shorter_name(self):
+        name_length = len(self.name)
+        if name_length > 50:
+            abbreviated_name = self.name[0:49]
+            display_name = abbreviated_name + "..."
+            return display_name
+        return self.name
+
     def get_price(self):
         if self.coupon_codes.all():
             cc = self.coupon_codes.first()

@@ -30,14 +30,16 @@
         </div>
 
         <div class="col-12 d-none d-md-block">
-            <button type="submit" class="btn btn-warning text-uppercase mt-2" value="Add to Cart"><i
-            class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</button>
+            <button type="submit" class="btn btn-warning text-uppercase mt-2 add-to-cart" value="Add to Cart">
+                <i class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart
+            </button>
         </div>
         <input type="hidden" name="redirect_url" value="{{ request.path }}">
 
         <div class="col-12 d-md-none fixed-bottom w-100">
-            <button type="submit" class="btn btn-warning text-uppercase mt-2 w-100" value="Add to Cart"><i
-            class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</button>
+            <button type="submit" class="btn btn-warning text-uppercase mt-2 w-100 add-to-cart" value="Add to Cart">
+                <i class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart
+            </button>
         </div>
         <input type="hidden" name="redirect_url" value="{{ request.path }}">
     </div>

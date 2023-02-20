@@ -80,6 +80,23 @@ html{
     cursor: pointer;
 }
 
+/***************** Toasts *******************/
+.toasts-container {
+    position: fixed;
+    top: 82px;
+    right: 10px;
+    z-index: 99999999999;
+}
+
+.my-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
+
 @media (max-width: 577px) {
     #logo{
         width:45px;
