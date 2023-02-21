@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
-{% block extra_css %}
 
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 
@@ -19,18 +20,50 @@
     <div class="row pt-5">
         <div class="col text-center">
             <h1>Checkout</h1> 
-            <hr class="w-100 mb-1 my-auto">
+            <hr class="w-100 mb-3 my-auto">
         </div>
     </div>
-    <div class="row mx-auto">
-        <div class="col-12 col-lg-6">
+    <!-- Collapse to show Cart Items on Small Screens Only -->
+    <div class="row mx-auto mt-2 mb-4 w-100 d-md-none">
+        <div class="card">
+            <h5 class="float-start"><b>Subtotal</b> ({{ product_count }}) :&nbsp;£{{ total }}</h5>
+            <a class="float-end" data-bs-toggle="collapse" href="#collapseExample" id="order-details-toggle" role="button" aria-expanded="false" aria-controls="collapseExample">Show Details</a>
+            <div class="collapse" id="collapseExample">
+                <div class="card-body">
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delivery Address Form -->
+    <div class="row mx-auto mt-2">
+        <div class="col-12 col-md-6">
+            <p class="text-bold">Please fill out the form below to complete your order</p>
             <form method="POST" action="{% url 'checkout' %}" id="grizz">
                 {% csrf_token %}
                 {{ order_form.full_name | as_crispy_field }}
             </form>
+        </div>
+        <div class="d-none d-lg-block col-md-6" id="cart-preview">
+            <!-- Show the cart here -->
         </div>
     </div>
 </div>
 
 {% endblock %}
 
+{% block postloadjs %}
+<script>
+document.getElementById("order-details-toggle").addEventListener("click", changeText);
+
+   function changeText() {
+    textToggle = document.getElementById("order-details-toggle");
+    if (textToggle.classList.contains("collapsed")) {
+        textToggle.innerHTML = "Show Details"
+    } else {
+        textToggle.innerHTML = "Hide Details"
+    }
+   }
+
+</script>
+{% endblock %}

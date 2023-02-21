@@ -1,3 +1,11 @@
 html{
     height: 100%
 }
+
+
+/************** Media Queries *****************/
+@media (min-width:768px) {
+    #cart-preview{
+        display: block !important;
+    }
+}
