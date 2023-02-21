@@ -21,7 +21,7 @@
 {% if cart_items %}
 <!-- Cart Item Summary -->
 <div class="row">
-    <div class="col">
+    <div class="col-sm-12 col-md-8 col-lg-9  order-2 order-md-1">
         <div class="table-responsive rounded pt-5 mx-md-5">
             <table class="table table-sm table-borderless">
                 <thead class="text-black">
@@ -95,8 +95,17 @@
         </div>
     </div>
     <!-- Cart Sub-Total -->
-    <div class="col-sm-12 col-md-4">
-
+    <div class="col-sm-12 col-md-4 col-lg-3 px-5 order-1 order-md-2 pt-3 ">
+        <div class="card rounded">
+            <div class="card-body">
+              <h5 class="card-title"><b>Subtotal</b> ({{ product_count }}) :&nbsp;£{{ total }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <div class="d-flex justify-content-center">
+                <a href="{% url 'checkout' %}" class="btn btn-success w-50">Proceed to Checkout</a>
+              </div>
+            </div>
+        </div>
     </div>
 </div>
 
