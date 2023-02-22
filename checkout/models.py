@@ -2,7 +2,7 @@ import uuid
 
 from django.db import models
 from django.conf import settings
-
+from django.db.models import Sum
 from products.models import Product
 
 
@@ -32,7 +32,7 @@ class Order(models.Model):
 
     def update_total(self):
         """
-        Update grand total each time a line item is added,
+        Update total each time a line item is added,
         accounting for delivery costs.
         """
         self.order_total = self.lineitems.aggregate(

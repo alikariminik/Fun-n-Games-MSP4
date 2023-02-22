@@ -1,9 +1,10 @@
 import stripe
 
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
-from django.http import JsonResponse
+from products.models import Product
+from .models import OrderLineItem, Order
 
 from .forms import OrderForm
 from cart.contexts import cart_contents
@@ -15,10 +16,49 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    cart = request.session.get('cart', {})
-    if not cart:
-        messages.error(request, '')
-        return redirect(reverse('products'))
+    if request.method == 'POST':
+        cart = request.session.get('cart', {})
+
+        form_data = {
+            'full_name': request.POST['full_name'],
+            'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
+            'street_address1': request.POST['street_address1'],
+            'street_address2': request.POST['street_address2'],
+            'town_or_city': request.POST['town_or_city'],
+            'county': request.POST['county'],
+            'postcode': request.POST['postcode'],
+            'country': request.POST['country'],
+        }
+        order_form = OrderForm(form_data)
+
+        if order_form.is_valid():
+            order = order_form.save()
+            for product_id, item_data in cart.items():
+                try:
+                    product = Product.objects.get(id=product_id)
+                    if isinstance(item_data, int):
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            product=product,
+                            quantity=item_data,
+                        )
+                        order_line_item.save()
+                except Product.DoesNotExist:
+                    messages.error(request, (
+                        "There is an issue relating to one of the \
+                        products you tried to purchase. Please try again \
+                        later and if the error persists, please contact us.")
+                    )
+                    order.delete()
+                    return redirect(reverse('view_cart'))
+
+            request.session['save_info'] = 'save-info' in request.POST
+            return redirect(reverse(
+                'checkout_success', args=[order.order_number]))
+        else:
+            messages.error(request, 'There was an error with the information\
+                you have provided. Please double check your information.')
 
     current_cart = cart_contents(request)
     total = current_cart['total']
@@ -40,16 +80,19 @@ def checkout(request):
     return render(request, template, context)
 
 
-def create_payment(request):
-    try:
-        data = json.loads(request.data)
-        intent = stripe.PaymentIntent.create(
-            amount=20,
-            currency="gbp"
-        )
+def checkout_success(request, order_number):
+    save_info = request.session.get('save_info')
+    order = get_object_or_404(Order, order_number=order_number)
+    messages.success(request, f'Your Order was Successful! \
+        Your Order Number is {order_number}. \
+        An email will sent to {order.email}  confirming this')
 
-        return JsonResponse({
-          'clientSecret': intent['client_secret']
-        })
-    except Exception as e:
-        return jsonify(error=str(e)), 403
+    if 'cart' in request.session:
+        del request.session['cart']
+
+    template = "checkout/checkout_success.html"
+    context = {
+        "order": order,
+    }
+
+    render(request, template, context)

@@ -6,7 +6,6 @@ from .models import Product, Category, CouponCode
 
 def all_products(request):
     """ A view to show all product details """
-
     products = Product.objects.all()
     query = None
     categories = None
