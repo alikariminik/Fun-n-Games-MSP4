@@ -20,4 +20,19 @@ var style = {
 var card = elements.create('card', {style: style});
 card.mount('#card-element');
 
+card.addEventListener("change", function (event) {
+  var errorDiv = document.getElementById("card-error");
+  if (event.error) {
+    var errorMessage = `
+      <span class="icon" role="alert">
+        <i class="fas fa-times"></i>
+      </span>
+      <span>${event.error.message}</span>
+    `;
+    $(errorDiv).html(errorMessage).addClass("text-danger");
+  } else {
+    errorDiv.textContent = ''
+  }
+});
+
 
