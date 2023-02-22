@@ -41,7 +41,21 @@
             <p class="text-bold">Please fill out the form below to complete your order</p>
             <form method="POST" action="{% url 'checkout' %}" id="grizz">
                 {% csrf_token %}
-                {{ order_form.full_name | as_crispy_field }}
+                <fieldset class="rounded px-3 mb-3">
+                    <legend class="fieldset-label px-2 w-auto">Your Details</legend>
+                    {{ order_form.full_name | as_crispy_field }}
+                    {{ order_form.email | as_crispy_field }}
+                    {{ order_form.phone_number | as_crispy_field }}
+                </fieldset>
+                <fieldset class="rounded px-3 mb-3">
+                    <legend class="fieldset-label px-2 w-auto">Delivery Address</legend>
+                    {{ order_form.street_address1 | as_crispy_field }}
+                    {{ order_form.street_address2 | as_crispy_field }}
+                    {{ order_form.town_or_city | as_crispy_field }}
+                    {{ order_form.county | as_crispy_field }}
+                    {{ order_form.postcode | as_crispy_field }}
+                    {{ order_form.country | as_crispy_field }}
+                </fieldset>
             </form>
         </div>
         <div class="d-none d-lg-block col-md-6" id="cart-preview">
