@@ -10,7 +10,8 @@ def relative_url(value, field, value_one, field_one, urlencode=None):
     url += '{}={}'.format(field_one, value_one)
     if urlencode:
         querystring = urlencode.split('&')
-        # Filter exisiting query string so direction and sort are no longer present
+        # Filter exisiting query string so direction and
+        # sort are no longer present
         querystring = [q for q in querystring if not (
             'sort' in q or 'direction' in q)]
         filtered_querystring = filter(

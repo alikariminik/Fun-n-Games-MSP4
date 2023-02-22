@@ -68,7 +68,12 @@
                         <div class="card-footer my-card-footer">
                             <div class="row">
                                 <div class="col product-price-footer">
+                                    {% if product.get_price == product.price %}
                                     <p>£{{ product.price }}</p>
+                                    {% else %}
+                                    <span class="text-danger" style="font-size:x-large;">£{{ product.get_price }}</span>
+                                    <span class="text-secondary" style="font-size:medium;" >&nbsp;<del>£{{ product.price }}</del>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="row">

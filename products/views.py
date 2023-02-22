@@ -38,7 +38,8 @@ def all_products(request):
                     request, "You haven't entered anything to search for!")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(product_description__icontains=query)
+            queries = Q(name__icontains=query) | Q(
+                product_description__icontains=query)
             products = products.filter(queries)
 
     context = {
@@ -54,11 +55,28 @@ def product_detail(request, product_id):
     """ A view to show an individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-    cat = CouponCode
+    discount = CouponCode
 
     context = {
         "product": product,
-        "discount": cat,
+        "discount": discount,
     }
 
     return render(request, "products/product_detail.html", context)
+
+
+def sale_products(request):
+    """ A view to show products that are on sale or have a deal on them """
+
+    products = Product.deal.filter(
+        CouponCode__name=first_name,
+        Deal__name=first_name,
+    )
+
+    context = {
+        "products": products,
+        "search_term": query,
+        "current_categories": categories,
+    }
+
+    return render(request, "products/products.html", context)
