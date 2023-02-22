@@ -64,9 +64,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'funngames.urls'
 
+# Crispy Forms settings
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+# Stripe settings
+# STRIPE_PUBLIC_KEY
+STRIPE_SECRET_KEY = "sk_test_51MeEiBFpgDYd3hANLfclsr5NLyPrNHGHd5XeKdGZcKnnJHUIAjGA4HkiuIjt6zTo9iXbj2ZpLfjt70OKCMb0k3oN00tDojyrVa"
 
 TEMPLATES = [
     {
