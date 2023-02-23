@@ -68,15 +68,11 @@ def product_detail(request, product_id):
 def sale_products(request):
     """ A view to show products that are on sale or have a deal on them """
 
-    products = Product.deal.filter(
-        CouponCode__name=first_name,
-        Deal__name=first_name,
-    )
+    products = Product.objects.filter(
+        coupon_codes__name='10%') | Product.objects.filter(deal__name='3for2')
 
     context = {
         "products": products,
-        "search_term": query,
-        "current_categories": categories,
     }
 
-    return render(request, "products/products.html", context)
+    return render(request, "products/sale_products.html", context)
