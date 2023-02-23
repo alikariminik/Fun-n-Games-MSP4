@@ -36,7 +36,8 @@
             <a class="float-end" data-bs-toggle="collapse" href="#collapseExample" id="order-details-toggle" role="button" aria-expanded="false" aria-controls="collapseExample">Show Details</a>
             <div class="collapse" id="collapseExample">
                 <div class="card-body">
-                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                    {% for item in cart_items %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -61,13 +62,25 @@
                     {{ order_form.county | as_crispy_field }}
                     {{ order_form.postcode | as_crispy_field }}
                     {{ order_form.country | as_crispy_field }}
+                    <div class="form-check form-check-inline float-right mr-0">
+                        {% if user.is_authenticated %}
+                            <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+                        {% else %}
+                            <label class="form-check-label" for="id-save-info">
+                                <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+                                <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                            </label>
+                        {% endif %}
+                    </div>
                 </fieldset>
                 <fieldset class="rounded px-3 mb-3">
                     <legend class="fieldset-label px-2 w-auto">Payment</legend>
                     <div class="rounded" id="card-element"><!--Stripe.js injects the Card Element--></div>
-                    <p id="card-error" role="alert"></p>
+                    <div class="mb-3 text-danger" id="card-error" role="alert"></div>
+                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     <div class="pt-3 d-flex justify-content-center">  
-                        <button id="btnSubmit " class="btn btn-warning w-75 text-center">
+                        <button id="btn-submit" type="submit" class="btn btn-warning w-75 text-center">
                             <div class="spinner hidden" id="spinner"></div>
                             <span id="button-text">Pay Now</span>
                         </button>

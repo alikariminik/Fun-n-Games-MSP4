@@ -37,14 +37,17 @@ def checkout(request):
 
         if order_form.is_valid():
             order = order_form.save()
-            for product_id, item_data in cart.items():
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_cart = json.dumps(cart)
+            for product_id, product_data in cart.items():
                 try:
                     product = Product.objects.get(id=product_id)
-                    if isinstance(item_data, int):
+                    if isinstance(product_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
                             product=product,
-                            quantity=item_data,
+                            quantity=product_data,
                         )
                         order_line_item.save()
                 except Product.DoesNotExist:
@@ -104,9 +107,9 @@ def checkout_success(request, order_number):
 @require_POST
 def cache_checkout_data(request):
     try:
-        paymentId = request.POST.get('client_secret').split('_secret')[0]
+        pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(paymentId, metadate={
+        stripe.PaymentIntent.modify(pid, metadate={
             'username': request.user,
             'save_info': request.POST.get('save_info'),
             'cart': json.dumps(request.session.get('cart', {}))
