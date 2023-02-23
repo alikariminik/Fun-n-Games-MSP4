@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product, Category, CouponCode
+from .models import Product, Category, CouponCode, Deal
 
 
 def all_products(request):
     """ A view to show all product details """
     products = Product.objects.all()
+    deal = Deal.objects.get(pk=1)
+    coupon_codes = CouponCode.objects.get(pk=1)
     query = None
     categories = None
     sort = None
@@ -46,6 +48,8 @@ def all_products(request):
         "products": products,
         "search_term": query,
         "current_categories": categories,
+        'deal': deal,
+        'coupon_codes': coupon_codes,
     }
 
     return render(request, "products/products.html", context)
@@ -69,10 +73,16 @@ def sale_products(request):
     """ A view to show products that are on sale or have a deal on them """
 
     products = Product.objects.filter(
-        coupon_codes__name='10%') | Product.objects.filter(deal__name='3for2')
+        coupon_codes__name__isnull=False) | Product.objects.filter(
+            deal__name__isnull=False)
+
+    deal = Deal.objects.get(pk=1)
+    coupon_codes = CouponCode.objects.get(pk=1)
 
     context = {
-        "products": products,
+        'products': products,
+        'deal': deal,
+        'coupon_codes': coupon_codes,
     }
 
     return render(request, "products/sale_products.html", context)

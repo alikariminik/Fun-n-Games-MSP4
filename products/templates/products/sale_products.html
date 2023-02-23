@@ -14,7 +14,7 @@
 <div class="container-fluid">
     <div class="row pt-5">
         <div class="col text-center">
-            <h1>All Toys</h1>
+            <h1>Sales</h1>
             <hr class="w-100 mb-1 my-auto">
         </div>
     </div>
@@ -70,9 +70,14 @@
                                 <div class="col product-price-footer">
                                     {% if product.get_price == product.price %}
                                     <p>£{{ product.price }}</p>
+                                        {% if product.deal is not None %}
+                                            <span class="text-danger" style="font-size:medium;">&nbsp; {{ deal }}
+                                        {% endif %}
                                     {% else %}
                                     <span class="text-danger" style="font-size:x-large;">£{{ product.get_price }}</span>
                                     <span class="text-secondary" style="font-size:medium;" >&nbsp;<del>£{{ product.price }}</del>
+                                        <span class="text-danger" style="font-size:medium;">&nbsp;-{{ coupon_codes }}</span>
+                                    </span>
                                     {% endif %}
                                 </div>
                             </div>

@@ -70,9 +70,12 @@
                                 <div class="col product-price-footer">
                                     {% if product.get_price == product.price %}
                                     <p>£{{ product.price }}</p>
+                                    <span class="text-danger" style="font-size:medium;">&nbsp; {{ deal }}
                                     {% else %}
                                     <span class="text-danger" style="font-size:x-large;">£{{ product.get_price }}</span>
                                     <span class="text-secondary" style="font-size:medium;" >&nbsp;<del>£{{ product.price }}</del>
+                                        <span class="text-danger" style="font-size:medium;">&nbsp;-{{ coupon_codes }}</span>
+                                    </span>
                                     {% endif %}
                                 </div>
                             </div>
