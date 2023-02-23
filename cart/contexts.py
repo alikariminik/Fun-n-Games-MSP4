@@ -54,13 +54,16 @@ def cart_contents(request):
             })
 
     if sub_total < settings.FREE_DELIVERY:
-        delivery = sub_total * Decimal(settings.STANDARD_DELIVERY / 100)
+        mini_delivery = sub_total * round(
+            Decimal(settings.STANDARD_DELIVERY / 100), 2)
+        delivery = round(mini_delivery, 2)
         free_delivery_remainder = settings.FREE_DELIVERY - sub_total
     else:
         delivery = 0
         free_delivery_remainder = 0
 
-    total = delivery + sub_total
+    mini_total = delivery + sub_total
+    total = round(mini_total, 2)
 
     context = {
         'cart_items': cart_items,

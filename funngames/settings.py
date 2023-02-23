@@ -184,5 +184,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Delivery
 FREE_DELIVERY = 70
 STANDARD_DELIVERY = 10

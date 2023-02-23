@@ -84,8 +84,8 @@
                 <div class="text-center">
                     <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
                     <p class="my-0">
-                        {% if total %}
-                            <span>£{{ total|floatformat:2 }}</span>
+                        {% if sub_total %}
+                            <span>£{{ sub_total|floatformat:2 }}</span>
                             <span><br><smaller>( {{ product_count }} )</small></span>
                         {% else %}
                             $0.00
