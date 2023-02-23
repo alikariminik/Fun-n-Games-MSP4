@@ -99,9 +99,6 @@ html{
     overflow: visible;
 }
 
-.toast-capper {
-    height: 2px;
-}
 
 
 @media (max-width: 577px) {
