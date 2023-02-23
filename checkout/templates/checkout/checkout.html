@@ -26,9 +26,13 @@
     <!-- Collapse to show Cart Items on Small Screens Only -->
     <div class="row mx-auto mt-2 mb-4 w-100 d-md-none">
         <div class="card">
-            <h5 class="float-start">Subtotal ({{ product_count }}):&nbsp;£{{ sub_total }}</h5>
-            <h5 class="float-start card-subtitle mb-2">Delivery: <span class="text-end">&nbsp;£{{ delivery }}</span></h5>
-            <h5 class="float-start card-title"><b>Total:&nbsp;£{{ total }}</b></h5>
+            <h6 class="float-start">Subtotal ({{ product_count }}):&nbsp;£{{ sub_total }}</h6>
+            {% if delivery == 0 %}
+            <h6 class="float-start card-subtitle mb-2">Delivery: <span class="text-end">&nbsp; FREE</span></h6>
+            {% else %}
+            <h6 class="float-start card-subtitle mb-2">Delivery: <span class="text-end">&nbsp;£{{ delivery }}</span></h6>
+            {% endif %}
+            <h6 class="float-start card-title"><b>Total:&nbsp;£{{ total }}</b></h5>
             <a class="float-end" data-bs-toggle="collapse" href="#collapseExample" id="order-details-toggle" role="button" aria-expanded="false" aria-controls="collapseExample">Show Details</a>
             <div class="collapse" id="collapseExample">
                 <div class="card-body">

@@ -30,7 +30,8 @@ def cart_contents(request):
         product = get_object_or_404(Product, pk=product_id)
 
         if product.get_price() == product.price:
-            sub_total += quantity * product.price
+            product_sub_total = get_product_total(product, quantity)
+            sub_total += product_sub_total
             product_count += quantity
             cart_items.append({
                 'product_id': product_id,

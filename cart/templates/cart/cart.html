@@ -99,7 +99,11 @@
         <div class="card rounded">
             <div class="card-body">
               <h6 class="card-subtitle text-align-right mb-2">Subtotal: ({{ product_count }}): <span class="text-end">&nbsp;£{{ sub_total }}</span></h6>
-              <h6 class="card-subtitle mb-2">Delivery: <span class="text-end">&nbsp;£{{ delivery }}</span></h6>
+              {% if delivery == 0 %}
+                <h6 class="card-subtitle mb-2">Delivery: <span class="text-end">&nbsp; FREE</span></h6>
+              {% else %}
+                <h6 class="card-subtitle mb-2">Delivery: <span class="text-end">&nbsp;£{{ delivery }}</span></h6>
+              {% endif %}
               <h6 class="card-title">Total:&nbsp;£{{ total }}</h6>
               {% if delivery != 0 %}
                 <p class="card-text"><b>Spend £{{ free_delivery_remainder }} more to get Free Delivery!</b></p>
