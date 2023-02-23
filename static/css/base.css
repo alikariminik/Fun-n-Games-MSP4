@@ -2,6 +2,13 @@ html{
     height:100%
 }
 
+.text-black{
+    color: black;
+}
+
+.font-weight-bold{
+    font-weight: 600;
+}
 /* Navbar */
 
 #logo{

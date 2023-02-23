@@ -95,4 +95,4 @@ def checkout_success(request, order_number):
         "order": order,
     }
 
-    render(request, template, context)
+    return render(request, template, context)
