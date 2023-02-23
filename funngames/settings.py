@@ -71,7 +71,8 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Stripe settings
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 STRIPE_CURRENCY = "gbp"
 
 TEMPLATES = [
