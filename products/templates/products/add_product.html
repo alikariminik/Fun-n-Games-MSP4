@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-2">
+    <div class="row pt-5">
+        <div class="col text-center">
+            <h1>Product Management</h1>
+            <hr class="w-100 mb-3 my-auto">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Add a Product</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-6 offset-md-3">
+            <form method="POST" action="{% url 'add_product' %}" class="form mb-2">
+                {% csrf_token %}
+                {{ form | crispy}}
+                <div class="mb-4 justify-content-end d-flex">
+                    <a class="btn btn-danger me-1" href="{% url 'products' %}">Cancel</a>
+                    <button class="btn btn-success " type="submit">Add Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

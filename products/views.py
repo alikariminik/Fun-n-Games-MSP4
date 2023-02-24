@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+
 from .models import Product, Category, CouponCode, Deal
+from .forms import ProductForm
 
 
 def all_products(request):
@@ -86,3 +88,14 @@ def sale_products(request):
     }
 
     return render(request, "products/sale_products.html", context)
+
+
+def add_product(request):
+    """Add a product to store"""
+    form = ProductForm()
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
