@@ -21,12 +21,17 @@
         <div class="col text-center">
             <h1>Thank You!</h1> 
             <hr class="w-100 mb-3 my-auto">
+            {% if from_profile %}
+            <div class="float-start">
+                <a href="{% url 'profile' %}" class="btn btn-info bg-gradient">
+                    <i class="fa-solid fa-backward"></i>&nbsp;Return to Profile
+                </a>
+            </div>
+            {% else %}
             <p>Your order was successful! Your Order Number is {{ order.order_number }}. 
                 <br>An email will be sent to {{ order.email }} confirming this.
             </p>
-            <p>Anthing else catch your eye? 
-                <a href="{% url 'sale' %}" class="btn btn-danger ">Check out our Latest Sales!</a>
-            </p>
+            {% endif %}
         </div>
     </div>
     <div class="row">
