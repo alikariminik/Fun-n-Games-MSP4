@@ -69,9 +69,9 @@
                             <div class="row">
                                 <div class="col product-price-footer">
                                     {% if product.get_price == product.price %}
-                                    <p>£{{ product.price }} {{ product.deal }}</p>
-                                        {% if deal is not None %}
-                                            <span class="text-danger" style="font-size:medium;">&nbsp; {{ deal }}
+                                    <span>£{{ product.price }}</span>
+                                        {% if product.get_deal_name != None %}
+                                            <span class="text-danger" style="font-size:medium;">&nbsp; {{ product.get_deal_name }}
                                         {% endif %}
                                     {% else %}
                                     <span class="text-danger" style="font-size:x-large;">£{{ product.get_price }}</span>

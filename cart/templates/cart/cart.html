@@ -40,12 +40,15 @@
                     </td>
                     <!-- Product Name -->
                     <td class="py-3" width="25%">
-                        <p class="my-0"><strong>{{ item.product.short_name }}</strong></p>
+                        <p class="my-0"><strong><a class="text-black" href="{% url 'product_detail' item.product.id %}">{{ item.product.short_name }}</a></strong></p>
                     </td>
                     <!-- Product Price and Sale Prices (if applicable) -->
                     <td class="py-3" width="10%">
                         {% if item.product.get_price == item.product.price %}
                         <span><p class="my-0">£{{ item.product.price }}</p></span>
+                            {% if item.product.get_deal_name != None %}
+                                <span class="text-danger" style="font-size:medium;"><b>{{ item.product.get_deal_name }}</b>
+                            {% endif %}
                         {% else %}
                         <span class="text-danger"><b>£{{ item.product.get_price }}</b></span>
                         <span class="text-secondary"><del>£{{ item.product.price }}</del></span>
@@ -87,7 +90,12 @@
                             id="remove_{{ item.product.id }}"><i class="fa-sharp fa-solid fa-xmark"></i></a>
                     </td>
                     <td class="py-3" width="10%">
-                        <strong>£{{ item.product_sub_total }}</strong>                     
+                        {% if item.product.get_deal_name == None %}
+                        <b>£{{ item.product_sub_total }}</b>
+                        {% else %}
+                        <b class="text-danger">£{{ item.product_sub_total }}</b><br>                     
+                        <span class="text-secondary"><del>£{{ item.product_non_discount }}</del></span>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}

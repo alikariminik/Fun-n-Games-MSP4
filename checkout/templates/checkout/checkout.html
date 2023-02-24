@@ -41,19 +41,27 @@
                         <div class="col-3">
                             <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="80" width="80">
                         </div>
-                        <div class="col-3">
-                            {{ item.product.shorter_name }}
+                        <div class="col-3 text-black">
+                            <a class="text-black" href="{% url 'product_detail' item.product.id %}">{{ item.product.shorter_name }}</a>
                         </div>
                         <div class="col-3">
                             {% if item.product.get_price == item.product.price %}
-                                £{{ item.product.get_price }} x {{ item.quantity }}
+                                £{{ item.product.get_price }} x {{ item.quantity }} <br>
+                                    {% if item.product.get_deal_name != None %}
+                                        <span class="text-danger" style="font-size:medium;"><b>{{ item.product.get_deal_name }}</b>
+                                    {% endif %}
                             {% else %}
                             £{{ item.product.get_price }} x {{ item.quantity }} <br>
                             <span class="text-secondary"><del>£{{ item.product.price }}</del></span>
                             {% endif %}
                         </div>
                         <div class="col-3">
-                            £{{ item.product_sub_total }}
+                            {% if item.product.get_deal_name == None %}
+                            <b>£{{ item.product_sub_total }}</b>
+                            {% else %}
+                            <b class="text-danger">£{{ item.product_sub_total }}</b><br>                     
+                            <span class="text-secondary"><del>£{{ item.product_non_discount }}</del></span>
+                            {% endif %}
                         </div>
                     </div>
                     {% endfor %}
@@ -119,18 +127,26 @@
                         <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="80" width="80">
                     </div>
                     <div class="col-3">
-                        {{ item.product.shorter_name }}
+                        <a class="text-black" href="{% url 'product_detail' item.product.id %}">{{ item.product.shorter_name }}</a>
                     </div>
                     <div class="col-3">
                         {% if item.product.get_price == item.product.price %}
-                            £{{ item.product.get_price }} x {{ item.quantity }}
+                            £{{ item.product.get_price }} x {{ item.quantity }} <br>
+                            {% if item.product.get_deal_name != None %}
+                                <span class="text-danger" style="font-size:medium;"><b>{{ item.product.get_deal_name }}</b>
+                            {% endif %}
                         {% else %}
                         £{{ item.product.get_price }} x {{ item.quantity }} <br>
                         <span class="text-secondary"><del>£{{ item.product.price }}</del></span>
                         {% endif %}
                     </div>
                     <div class="col-3">
-                        £{{ item.product_sub_total }}
+                        {% if item.product.get_deal_name == None %}
+                        <b>£{{ item.product_sub_total }}</b>
+                        {% else %}
+                        <b class="text-danger">£{{ item.product_sub_total }}</b><br>                     
+                        <span class="text-secondary"><del>£{{ item.product_non_discount }}</del></span>
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}

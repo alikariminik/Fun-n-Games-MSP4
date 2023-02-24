@@ -59,6 +59,12 @@ class Product (models.Model):
             return new_price
         return self.price
 
+    def get_deal_name(self):
+        if self.deal.all():
+            deal_name = self.deal.first().name
+            return deal_name
+        return None
+
 
 class CouponCode(models.Model):
     percentage = models.IntegerField()

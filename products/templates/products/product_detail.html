@@ -14,8 +14,8 @@
     <div class="row">
         <div class="col-10 offset-1">
             <div class="row mt-1 mb-2">
-                <div class="col-sm-12 col-md-6 col-lg-4 mt-2 pb-5">
-                    <div class="image-container mt-sm-3">
+                <div class="col-sm-12 col-md-6 col-lg-4 mt-2 pb-3">
+                    <div class="image-container mt-3 mt-sm-5">
                         {% if product.image.url %}
                         <div class="image-container prod-image-container-sm px-1">
                             <a href="">
@@ -39,6 +39,10 @@
                         <hr>
                         <p>{{ product.details }}</p>
                         <p>{{ product.product_description }}</p>
+                        {% if product.get_deal_name != None %}
+                            <span class="text-danger text-start" style="font-size:x-large;">{{ product.get_deal_name }} 
+                            <span class="text-danger" style="font-size:medium;">That's right! Buy 3 of these items and for the price of 2!</span></span>
+                        {% endif %}
 
                         {% if product.get_price == product.price %}
                             <p><strong style="font-size:x-large;">&nbsp;£{{ product.get_price }}</strong></p>
