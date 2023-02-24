@@ -71,11 +71,15 @@
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <p class="small mb-0 text-black font-weight-bold">
-                            {{ item.product.name }}{% if item.product_size %} - Size {{ item.product.size|upper }}{% endif %}
+                            {{ item.product.name }}
                         </p>
                     </div>
                     <div class="col-12 col-md-8 text-md-right">
-                        <p class="small mb-0">{{ item.quantity }} @ £{{ item.product.price }} each</p>
+                        <p class="small mb-0">{{ item.quantity }} @ £{{ item.product.price }} each
+                            {% if item.product.get_deal_name != None %}
+                                <span class="text-black" style="font-size:small;"><br>{{ item.product.get_deal_name }} applied
+                            {% endif %}
+                        </p>
                     </div>
                 </div>
                 {% endfor %}

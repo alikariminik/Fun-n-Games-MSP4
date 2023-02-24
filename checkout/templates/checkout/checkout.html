@@ -32,7 +32,7 @@
             {% else %}
             <h6 class="float-start card-subtitle mb-2">Delivery: <span class="text-end">&nbsp;£{{ delivery }}</span></h6>
             {% endif %}
-            <h6 class="float-start card-title"><b>Total:&nbsp;£{{ total }}</b></h5>
+            <h5 class="float-start card-title"><b>Total:&nbsp;£{{ total }}</b></h5>
             <a class="float-end" data-bs-toggle="collapse" href="#collapseExample" id="order-details-toggle" role="button" aria-expanded="false" aria-controls="collapseExample">Show Details</a>
             <div class="collapse" id="collapseExample">
                 <div class="card-body">
@@ -119,8 +119,8 @@
                 </fieldset>
             </form> 
         </div>
-        <div class="d-none d-lg-block col-md-6 rounded-2" id="cart-preview"><h5>Your Cart</h5>
-            <div class="card-body rounded-2 border border-2 border-warning">
+        <div class="d-none d-md-block col-md-6 rounded-2"><h5>Your Cart</h5>
+            <div class="card-body rounded-2 border border-2 border-warning" id="cart-preview">
                 {% for item in cart_items %}
                 <div class="row py-3">
                     <div class="col-3">
@@ -150,6 +150,15 @@
                     </div>
                 </div>
                 {% endfor %}
+            </div>
+            <div class="card rounded-2 border border-2 border-warning">
+                <h6 class="float-start">Subtotal ({{ product_count }}):&nbsp;£{{ sub_total }}</h6>
+                {% if delivery == 0 %}
+                <h6 class="float-start card-subtitle mb-2">Delivery: <span class="text-end">&nbsp; FREE</span></h6>
+                {% else %}
+                <h6 class="float-start card-subtitle mb-2">Delivery: <span class="text-end">&nbsp;£{{ delivery }}</span></h6>
+                {% endif %}
+                <h5 class="float-start card-title"><b>Total:&nbsp;£{{ total }}</b></h5>
             </div>
         </div>
     </div>
