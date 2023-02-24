@@ -10,6 +10,11 @@ html{
     background: white;
 }
 
+#cart-preview{
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
 .result-message {
     line-height: 22px;
     font-size: 16px;

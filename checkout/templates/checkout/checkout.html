@@ -37,6 +37,25 @@
             <div class="collapse" id="collapseExample">
                 <div class="card-body">
                     {% for item in cart_items %}
+                    <div class="row py-3">
+                        <div class="col-3">
+                            <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="80" width="80">
+                        </div>
+                        <div class="col-3">
+                            {{ item.product.shorter_name }}
+                        </div>
+                        <div class="col-3">
+                            {% if item.product.get_price == item.product.price %}
+                                £{{ item.product.get_price }} x {{ item.quantity }}
+                            {% else %}
+                            £{{ item.product.get_price }} x {{ item.quantity }} <br>
+                            <span class="text-secondary"><del>£{{ item.product.price }}</del></span>
+                            {% endif %}
+                        </div>
+                        <div class="col-3">
+                            £{{ item.product_sub_total }}
+                        </div>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
@@ -88,13 +107,34 @@
                     <p class="result-message hidden">
                         Payment succeeded, see the result in your
                         <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-                    </p>
-                    </div>  
+                    </p> 
                 </fieldset>
             </form> 
         </div>
-        <div class="d-none d-lg-block col-md-6" id="cart-preview">
-            <!-- Show the cart here -->
+        <div class="d-none d-lg-block col-md-6 rounded-2" id="cart-preview"><h5>Your Cart</h5>
+            <div class="card-body rounded-2 border border-2 border-warning">
+                {% for item in cart_items %}
+                <div class="row py-3">
+                    <div class="col-3">
+                        <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="80" width="80">
+                    </div>
+                    <div class="col-3">
+                        {{ item.product.shorter_name }}
+                    </div>
+                    <div class="col-3">
+                        {% if item.product.get_price == item.product.price %}
+                            £{{ item.product.get_price }} x {{ item.quantity }}
+                        {% else %}
+                        £{{ item.product.get_price }} x {{ item.quantity }} <br>
+                        <span class="text-secondary"><del>£{{ item.product.price }}</del></span>
+                        {% endif %}
+                    </div>
+                    <div class="col-3">
+                        £{{ item.product_sub_total }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
