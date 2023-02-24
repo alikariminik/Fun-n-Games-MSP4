@@ -1,0 +1,28 @@
+Hi {{ order.full_name }},
+
+Thank you for your purchase. Please find below your order details:
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Order Sub-Total: ${{ order.order_total }}
+Delivery Fees: ${{ order.delivery_cost }}
+Order Total: ${{ order.grand_total }}
+
+Your order will be shipped to: 
+{{ order.street_address1 }}  
+{{ order.street_address1 }}  
+{{ order.town_or_city }}
+{{ order.county }}.
+{{ order.postcode }}.
+{{ order.country }}.
+
+We've got your phone number on file as {{ order.phone_number }}.
+
+If you need to get in touch with us, our email is {{ contact_email }}
+
+Thank you for your order!
+
+Kindest Regards,
+
+Fun'N'Games Toy Store

@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-alikarimini-funngamesms-ylyi64ioxyy.ws-eu87.gitpod.io']
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-alikarimini-funngamesms-ylyi64ioxyy.ws-eu87.gitpod.io']
 
 # Application definition
 
@@ -189,3 +190,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Delivery
 FREE_DELIVERY = 70
 STANDARD_DELIVERY = 10
+
+# Confirmation Email
+DEFAULT_FROM_EMAIL = "funngamestoys@example.com"
