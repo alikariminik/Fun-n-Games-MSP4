@@ -21,12 +21,12 @@ SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$o1waq$i_bfiygmqy8#*8^73-$ilammd^psl)kj&d!_)^py4ru'
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["alirkariminik-fun-n-games.herokuapp.com", "localhost"]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-alikarimini-funngamesms-ylyi64ioxyy.ws-eu87.gitpod.io']
