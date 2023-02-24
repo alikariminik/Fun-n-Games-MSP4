@@ -103,11 +103,23 @@
                 </fieldset>
                 <fieldset class="rounded px-3 mb-3">
                     <legend class="fieldset-label px-2 w-auto">Payment</legend>
-                    <div class="rounded" id="card-element"><!--Stripe.js injects the Card Element--></div>
-                    <div class="mb-3 text-danger" id="card-error" role="alert"></div>
+                    <div class="rounded" id="card-element">
+                        <!--Stripe.js injects the Card Element-->
+                    </div>
+                    <div class="mb-3 text-danger" id="card-errors" role="alert">
+                        <!-- Used to display form errors -->
+                    </div>
                     <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                        <!-- Total payment on card -->
+                    <p class="small text-danger my-0">
+                        <span class="icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </span>
+                        <span>Your card will be charged <strong>£{{ total|floatformat:2 }}</strong></span>
+                    </p>
+                        <!-- Pay Now Button -->
                     <div class="pt-3 d-flex justify-content-center">  
-                        <button id="btn-submit" type="submit" class="btn btn-warning w-75 text-center">
+                        <button id="btn-submit" class="btn btn-warning w-75 text-center">
                             <div class="spinner hidden" id="spinner"></div>
                             <span id="button-text">Pay Now</span>
                         </button>
@@ -120,7 +132,7 @@
             </form> 
         </div>
         <div class="d-none d-md-block col-md-6 rounded-2"><h5>Your Cart</h5>
-            <div class="card-body rounded-2 border border-2 border-warning" id="cart-preview">
+            <div class="card-body rounded-2 border border-2 border-success" id="cart-preview">
                 {% for item in cart_items %}
                 <div class="row py-3">
                     <div class="col-3">
@@ -151,14 +163,17 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="card rounded-2 border border-2 border-warning">
-                <h6 class="float-start">Subtotal ({{ product_count }}):&nbsp;£{{ sub_total }}</h6>
+            <div class="card mt-3 rounded-2 border border-2 border-warning">
+                <h6 class="float-start my-2">Subtotal ({{ product_count }}):&nbsp;£{{ sub_total }}</h6>
                 {% if delivery == 0 %}
-                <h6 class="float-start card-subtitle mb-2">Delivery: <span class="text-end">&nbsp; FREE</span></h6>
+                <h6 class="float-start card-subtitle">Delivery: <span class="text-end">&nbsp; FREE</span></h6>
                 {% else %}
-                <h6 class="float-start card-subtitle mb-2">Delivery: <span class="text-end">&nbsp;£{{ delivery }}</span></h6>
+                <h6 class="float-start card-subtitle">Delivery: <span class="text-end">&nbsp;£{{ delivery }}</span></h6>
                 {% endif %}
-                <h5 class="float-start card-title"><b>Total:&nbsp;£{{ total }}</b></h5>
+                <h5 class="float-start card-title my-2"><b>Total:&nbsp;£{{ total }}</b></h5>
+                <a href="{% url 'view_cart' %}" class="btn btn-secondary">
+                    <span class="font-weight-bold">Edit Cart</span>
+                </a>
             </div>
         </div>
     </div>
@@ -166,7 +181,7 @@
 <div id="processing-overlay">
     <h1 class="processing-spinner">
         <span class="icon">
-            <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+            <i class="fas fa-spinner fa-spin fa-3x"></i>
         </span>
     </h1>
 </div>
@@ -176,6 +191,7 @@
 {% block postloadjs %}
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
 {{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe.js' %}"></script>
 <script>
 document.getElementById("order-details-toggle").addEventListener("click", changeText);
 
@@ -189,5 +205,4 @@ document.getElementById("order-details-toggle").addEventListener("click", change
    }
 
 </script>
-<script src="{% static 'checkout/js/stripe.js' %}"></script>
 {% endblock %}

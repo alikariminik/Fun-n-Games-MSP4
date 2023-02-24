@@ -23,7 +23,7 @@ var card = elements.create('card', {
 card.mount('#card-element');
 
 card.addEventListener("change", function (event) {
-  var errorDiv = document.getElementById("card-error");
+  var errorDiv = document.getElementById("card-errors");
   if (event.error) {
     var errorMessage = `
       <span class="icon" role="alert">
@@ -39,11 +39,9 @@ card.addEventListener("change", function (event) {
 
 var form = document.getElementById('payment-form');
 
-form.addEventListener('submit ', function (ev) {
+form.addEventListener('submit', function (ev) {
   ev.preventDefault();
-  card.update({
-    'disabled': true
-  });
+  card.update({'disabled': true});
   $('#btn-submit').attr('disabled', true);
   $('#payment-form').fadeToggle(100);
   $('#processing-overlay').fadeToggle(100);
@@ -55,7 +53,7 @@ form.addEventListener('submit ', function (ev) {
     'client_secret': clientSecret,
     'save_info': saveInfo,
   }
-  var url = '/checkout.chache_checkout_date/';
+  var url = '/checkout/cache_checkout_data/';
 
   $.post(url, postData).done(function () {
     stripe.confirmCardPayment(clientSecret, {
