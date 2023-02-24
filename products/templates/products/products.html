@@ -61,13 +61,13 @@
                         {% endif %}
                         <a class="text-decoration-none text-black cat" href="{% url 'product_detail' product.id %}">
                             <div class="card-body my-card-body" id="div-text">
-                                <a class="text-decoration-none text-black" href="{% url 'product_detail' product.id %}">
+                                <a class="text-decoration-none text-black" href="{% url 'product_detail' product.id %}"></a>
                                 <h5 style="text-overflow: ellipsis;">{{ product.name }}</h5>
                             </div>
                         </a>
                         <div class="card-footer my-card-footer">
                             <div class="row">
-                                <div class="col product-price-footer">
+                                <div class="col d-flex justify-content-center product-price-footer">
                                     {% if product.get_price == product.price %}
                                     <span>£{{ product.price }} </span>
                                         {% if product.get_deal_name != None %}
@@ -82,11 +82,10 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
-                                    <div class="">
-                                        <a href="#" type="button" class="btn btn-warning"><i
-                                                class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</a>
-                                    </div>
+                                <div class="col d-flex justify-content-center">
+                                    <a class="btn btn-warning text-black" href="{% url 'product_detail' product.id %}">
+                                        <i class="fa-solid fa-circle-info"></i>&nbsp;View Product
+                                    </a>
                                 </div>
                             </div>
                         </div>

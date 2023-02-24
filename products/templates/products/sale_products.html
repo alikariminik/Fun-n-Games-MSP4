@@ -67,9 +67,9 @@
                         </a>
                         <div class="card-footer my-card-footer">
                             <div class="row">
-                                <div class="col product-price-footer">
+                                <div class="col d-flex justify-content-center product-price-footer">
                                     {% if product.get_price == product.price %}
-                                    <span>£{{ product.price }}</span>
+                                    <span>£{{ product.price }} </span>
                                         {% if product.get_deal_name != None %}
                                             <span class="text-danger" style="font-size:medium;">&nbsp; {{ product.get_deal_name }}
                                         {% endif %}
@@ -82,11 +82,10 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
-                                    <div class="">
-                                        <a href="#" type="button" class="btn btn-warning"><i
-                                                class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</a>
-                                    </div>
+                                <div class="col d-flex justify-content-center">
+                                    <a class="btn btn-warning text-black" href="{% url 'product_detail' product.id %}">
+                                        <i class="fa-solid fa-circle-info"></i>&nbsp;View Product
+                                    </a>
                                 </div>
                             </div>
                         </div>

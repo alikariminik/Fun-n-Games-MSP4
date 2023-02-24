@@ -29,7 +29,6 @@ def add_to_cart(request, product_id):
         messages.success(
             request, f'{quantity}x {product.shorter_name()} has been added to \
             your cart.')
-        print("hi")
 
     request.session['cart'] = cart
 
