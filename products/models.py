@@ -18,7 +18,7 @@ class Category(models.Model):
 
 
 class Product (models.Model):
-    uniq_id = models.CharField(max_length=254, null=True, blank=True)
+    uniq_id = models.IntegerField(null=True, blank=True)
     name = models.CharField(max_length=254)
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
@@ -27,7 +27,6 @@ class Product (models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     product_description = models.TextField()
     image_url = models.URLField(max_length=1024, null=True, blank=True)
-    variants = models.URLField(max_length=1024, null=True, blank=True)
     product_url = models.URLField(max_length=1024, null=True, blank=True)
     coupon_codes = models.ManyToManyField("products.CouponCode", blank=True)
     deal = models.ManyToManyField("products.Deal", blank=True)

@@ -12,7 +12,6 @@ class ProductAdmin(admin.ModelAdmin):
         "price",
         "product_description",
         "image_url",
-        "variants",
         "product_url",
     )
 
