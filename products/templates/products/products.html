@@ -53,7 +53,7 @@
                         </div>
                         {% else %}
                         <div class="image-container">
-                            <a href="{% url 'product_detail' product_id %}">
+                            <a href="{% url 'product_detail' product.id %}">
                                 <img src="{% static 'media/images/no-image-placeholder.png' %}" class="card-img-top img-fluid"
                                     alt="{{ product.name }}">
                             </a>

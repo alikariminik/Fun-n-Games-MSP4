@@ -140,7 +140,11 @@
                 {% for item in cart_items %}
                 <div class="row py-3">
                     <div class="col-3">
+                        {% if item.product.image_url %}
                         <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="80" width="80">
+                        {% else %}
+                        <img class="img-fluid rounded" src="{% static 'media/images/no-image-placeholder.png' %}" height="80" width="80">
+                        {% endif %}
                     </div>
                     <div class="col-3">
                         <a class="text-black" href="{% url 'product_detail' item.product.id %}">{{ item.product.shorter_name }}</a>
