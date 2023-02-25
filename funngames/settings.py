@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ["fun-n-games.herokuapp.com/", "localhost"]
+ALLOWED_HOSTS = ["fun-n-games.herokuapp.com", "localhost"]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-alikarimini-funngamesms-ylyi64ioxyy.ws-eu87.gitpod.io']
