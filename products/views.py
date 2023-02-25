@@ -11,7 +11,7 @@ def all_products(request):
     """ A view to show all product details """
     products = Product.objects.all()
     deal = Deal.objects.get(id=1)
-    coupon_codes = CouponCode.objects.get(pk=1)
+    coupon_codes = CouponCode.objects.get(id=1)
     query = None
     categories = None
     sort = None
@@ -79,8 +79,8 @@ def sale_products(request):
         coupon_codes__name__isnull=False) | Product.objects.filter(
             deal__name__isnull=False)
 
-    deal = Deal.objects.get(pk=1)
-    coupon_codes = CouponCode.objects.get(pk=1)
+    deal = Deal.objects.get(id=1)
+    coupon_codes = CouponCode.objects.get(id=1)
 
     context = {
         'products': products,
