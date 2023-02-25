@@ -92,6 +92,42 @@ Implementation:
 * To be implemented through Allauth and Django.
 
 User Story:
+> As a User, I want to be able to add a product to my cart, adjust its quantity and remove it without exiting the browser session so that I can browse and make changes to my cart if I want to.
+
+Acceptance Criteria:
+* Users should be able to make any edits to their cart in terms of quantity and products.
+
+Implementation:
+* A cart overview page where edits and removals can be made.
+
+User Story: 
+> As a User, I want to be able to review my cart prior to making a purchase.
+
+Acceptance Criteria:
+* A Cart preview should appear on the same page as where the payment is placed. 
+
+Implementation:
+* The Cart's Items will be rendered to the view in which the payment form is held.
+
+User Story:
+> As a User, I want to be able to save my default delivery details to my profile to allow for quicker checkouts in the future.
+
+Acceptance Criteria:
+* Users delivery information should be saved to their account (if they wish to) when making a purchase
+
+Implementation:
+* The User's profile page should display saved delivery information.
+
+User Story:
+> As a User, I want to be able to update my default delivery details without needing to purchase anything.
+
+Acceptance Criteria:
+* Delivery details should be able to be updated without needing to place an order.
+
+Implementations:
+* In the User's Profile page, where saved delivery details are stored, there should be an option to update these details.
+
+User Story:
 > As a Store Owner, I want to be able to add new products to my store so that I can offer the news toys to customers
 
 Acceptance Criteria:
