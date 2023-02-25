@@ -1,108 +1,246 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Fun-N-Games README
+Here is a link to the website [Fun-N-Games](https://fun-n-games.herokuapp.com/home)
 
-Welcome alikariminik,
+## What is this ReadME for?
+This is the ReadMe for the website Fun-N-Games. Fun-N-Games is an e-commerce toystore website built using Django an application with the use of Python, HTML, CSS, JavaScript. The Products, User Accounts and Models are in a SQL Elephant Database and static files such as images and CSS are stored with AWS. 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Table of Contents
+* [User Experience Design (UX)](#UX)
+    * [The Strategy Plane](#The-Strategy-Plane)
+        * [Site Goals](#Site-Goals)
+        * [User Stories](#User-Stories)
+    * [The Scope Plane](#The-Scope-Plane)
+    * [The Structure Plane](#The-Structure-Plane)
+    * [The Skeleton Plane](#The-Skeleton-Plane)
+        * [Wireframes](#Wireframes)
+    * [The Surface Plane](#The-Surface-Plane)
+        * [Design](#design)
+            * [Colour-Scheme](#colour-scheme)
+            * [Typography](#typography)
+            * [Imagery](#imagery)
+    * [Features](#features)
+        * [ParliamentAPI](#uk-parliament-api )
+        * [Planned / Scrapped Features](#planned--scrapped-features)
+    * [DataSchema](#data-schema)
+    * [Testing](#testing)
+      * [Validator Testing](#validator-testing)
+      * [Responsiveness](#responsiveness)
+      * [Known Bugs](#known-bugs)
+    * [Deployment](#deployment)
+    * [Credits](#credits)
+        * [Resources](#resources)
+        * [Code](#code)
+        * [Media](#media)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+## UX
 
-## Gitpod Reminders
+### The Strategy Plane
+* I decided on making an E-Commerce Toy Store for my Milestone Project when browsing for a suitable dataset that fit the requirements of my project. After having spent a good few hours - longer than I had hoped to do so, I came across [Amazon-Products-Dataset](https://www.kaggle.com/datasets/promptcloud/amazon-product-dataset-2020) which was filled with thousands of different products all with photos and prices as well as details on the products. After scanning through this dataset, I noticed that there was an abundance of Toy Products in here so I decided to cut the other 8000 or so items out of this dataset and settle on a Toy Store.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
 
-`python3 -m http.server`
+#### User Stories 
+* User Stories and their statuses can be found here [UserStories-GitHub-Projects](https://github.com/users/alikariminik/projects/1/views/1)
 
-A blue button should appear to click: _Make Public_,
 
-Another blue button should appear to click: _Open Browser_.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### The Scope Plane
+Features Planned
+* A page which displays all of the products in one page.
+* A page which only shows products that have a special offer or a discount applied.
+* A check out feature which utilises Stripe payments
+* An account creation system which meets standard password and account protections such as minimum characters length.
+* Responsive Design allowing the user to correctly operate the site across a range of devices the user could potentially use such as Desktop, Laptop, Tablet and Mobiles.
+* Be able to Create, Read, Update and Delete data on the database through the website and have these changes reflect instantly on the website (CRUD Functionality)
+* The site should be fully accessible for keyboard users
+* The site should be fully accessible for screen reader users
 
-A blue button should appear to click: _Make Public_,
+### The Structure Plane 
+User Story: 
+> As a User, I want to be able to search for, filter & sort products in the store
 
-Another blue button should appear to click: _Open Browser_.
+Acceptance Criteria:
+* User should be able to search for products using the search bar, filter by catergories and sort by price.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+Implementation:
+* A Search Bar, NavBar with links to filter by categories will available on all pages of the site. Sort options will be confined to products pages.
 
-To log into the Heroku toolbelt CLI:
+User Story: 
+> As a User, I want to be able to view all products which are on sale so that I can make savings by purchasing only discounted products.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+Acceptance Criteria:
+* User should be able to view only products which have a sale or special offer attached to them.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+Implementation:
+* A seperate products page is created which will only show products on sale and ones which have a special offer on them.
 
-------
+User Story: 
+> As a User, I want to be able to log in to my account so that I can review my past orders and save default delivery details
 
-## Release History
+Acceptance Criteria:
+* Users should be able to view previous orders and saved default delivery details. 
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+Implementation:
+* A profile page to be implemented for registered users which will display past orders and currently saved delivery information with the option to update this through a form.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+User Story:
+> As a User, I want to receive email confirmations when I create an account so that I know the account creation was successful.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+Acceptance Criteria:
+* When a user creates an account, an email verifying this is sent out. 
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+Implementation:
+* To be implemented through Allauth and Django.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+User Story:
+> As a Store Owner, I want to be able to add new products to my store so that I can offer the news toys to customers
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+Acceptance Criteria:
+* Superuser can add new products to the store database and these will immediately show on the website.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+Implementation:
+* An Add Product Form, accessible only to Superusers that will allow for new products to be created when a name, price, and details details are given.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+User Story: 
+> As a Store Owner, I want to be able to edit the details of existing products in the store so that I can make changes where necessary (such as price increases / decreases or product name)
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+Acceptance Criteria:
+* Superuser can edit any of the fields of exisiting products
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+Implementation:
+* An Edit Product Form, accessible only to Superusers that will allow for name, price, details, image etc changes.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+User Story:
+> As a Store Owner, I want to be able to put products of my choice onto sale and dynamically set the sale price so that I can have frequently reduce product prices in order to increase the likelihood of sales
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+Acceptance Criteria:
+* Superusers should be able to put any product on sale or attach a special offer to them. 
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+Implementation:
+* Through the same Edit Form mentioned in the previous user story or through the django-admin, sales and deals can be attached to any product of the Store Owner's choice.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+User Story:
+> As a Store Owner, I want to be able to allow users to create accounts using their social media accounts so that I can make it quicker for users and increase the likelihood that they will use our store.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+Acceptance Criteria:
+* Users can create an account through their existing social media accounts
 
-------
+Implementation:
+* To be implemented through Allauth.
 
-## FAQ about the uptime script
+### The Skeleton Plane
+#### Wireframes
+I utilised Balsamiq to produce my wireframes of how the app homescreen would appear across different devices. This was not stuck to.l
 
-**Why have you added this script?**
+Mobile Device Wireframes 
+ ![Mobile Device Home](media/wireframes/wireframe-desktop-home.png)
+Tablet Device Wireframes
+ ![Tablet Device Home](media/wireframes/wireframe-desktop-home.png)
+Desktop Device Wireframes
+ ![Desktop Device Home](media/wireframes/wireframe-desktop-home.png)
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
 
-**How will this affect me?**
+### The Surface Plane
+#### Design 
+The area I felt this project lacked in the most was the design. I have relied very heavily on Bootstrap which has been extremely helpful for quick development whilst ensuring responsiveness and performance across varying screen views. However, I feel as though had I had more time to spend on this project, I would have improved the design more by adding more of my own custom CSS and utilised an eye-catching colour pallet 
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+![StoreLogo](https://www.freelogodesign.org/)
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+#### Imagery
+The images for the products are obtained directly from where they are hosted online on Amazon. This was a downside of the dataset I found in that it did not have a file with images seperate. This can can effect performance when loading All Products as there are over 2000 images being downloaded. Additionally, if the product image was ever removed from its original hosting site (for which I have no control over) then this site would not be able to retrieve the product image. However, as a safeguard for this, there is a backup image. 
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+### Planned / Scrapped Features
+When starting out, I had planned to allow for users to register accounts through their Social Media accounts. This is outlined in one of the User Stories. I believe that this feature would have been a nice touch and if it were utilised in a real store, then it is likely to increase the chance of custom as an account can usually be created in just a couple of taps / clicks. 
 
-**So….?**
+### Languages Used
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+-   [HTML5](https://en.wikipedia.org/wiki/HTML5)
+-   [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+-   [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+-   [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 
-**Can I opt out?**
+### Frameworks, Libraries & Programs Used
+-   [Django](https://www.djangoproject.com/) 
+    - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.
+-   [Font Awesome:](https://fontawesome.com/)
+    - Font Awesome icons were used across the pages which acted as buttons to aid navigation for the user. The Font Awesome Icons themselves were also added for aesthetic and UX purposes.
+-   [Bootstrap 5.3](https://getbootstrap.com/)
+    - Bootstrap was used to assist with the responsiveness, layout, design and JavaScript components on the website
+-   [elephantsql](https://www.elephantsql.com/)
+    - The Relational Database was hosted on elephantsql and its data is obtained through the use of
+-   [AWS](https://aws.amazon.com/)
+    - Used to store images and static files.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+## Data Schema
+### Products
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
 
-**Anything more?**
+### Profiles
+#### UserProfile
+-   User = A one-to-one relationship with User from Django Allauth "User"
+-   default_street_address1 = Character Field storing first line address
+-   default_street_address2 = Character Field storing second line address
+-   default_town_or_city = Character Field storing town / city name
+-   default_postcode = Character Field storing postcode / Zip
+-   default_county = Character Field storing county / state
+-   default_country = Dropdown selector used to capture country
+-   default_phone_number = Character Field storing mobile phone number
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+### Products
+#### Product 
+-   uniq_id =IntegerField(null=True, blank=True)
+-   name =254)
+-   category = A many-to-many relationship with the Category model
+-   sub_category1 = Character Field. Initial plans to incorporate sub-categories of products but this was mot implemented.
+-   sub_category2 = Character Field. Initial plans to incorporate sub-categories of products but this was mot implemented.
+-   price = Decimal field which stores product price.
+-   product_description = Character field which stores product description. 
+-   product_url = URL Field which stores product image.
+-   coupon_codes = A many-to-many relationship with the CouponCode model. Allows for Discounts to be applied to products.
+-   deal = A many-to-many relationship with the Deal model. Allows for Special Offers to be applied to products.
 
----
+#### Category
+-   name = Character field containing category name. Allows for filtering by category in the store.
+-   friendly_name =  Character field containing category name displayed in an user-friendly name.
 
-Happy coding!
+#### CouponCode
+-   Percentage = Integer field which will deduct a given percentage from the product price. User to apply sales. 
+-   Name = Character field use to render the value of the saving in percentage.
+-   discount_amount = Not used Character field. Initial idea was to calculate value of the saving between old and sale price for a product.
+
+#### Deal
+-   name = Character field capturing name of Deal (3for2).
+-   eligible_quantity = IntegerField used to calculate if Special Offer criteria is met (3). 
+-   saved_quantity = IntegerField used to calculate if Special Offer criteria is met (For every 3 in Cart, deduct 1).
+
+## Testing 
+### Behaviour Driven Development (BDD)
+
+### Validator Testing
+* HTML
+  *     [W3C Validator](https://validator.w3.org/nu/)
+
+* CSS
+  *     [Jigsaw Validator](https://jigsaw.w3.org/css-validator/validator)
+
+* JSlint
+  *     [JSlint Validator](https://www.jslint.com/)
+
+### Responsiveness
+Vigorous testing was conducted throughout the development process to ensure that the site maintained responsiveness as more elements were added on. Using developer tools and adjusting screen dimensions, I have checked to ensure that all content displays clearly over a variety of screen sizes - primarily on the Mobile, Tablet and Monitors. As mentioned above, media queries were added to correct responsiveness failings from Materialize.
+
+### Known Bugs
+- No known bugs at this time.
+
+
+## Credits
+
+#### Resources 
+- Code Institute course material
+- Code Institute Mentor
+- [CodeInstitute-ReadME](https://github.com/Code-Institute-Solutions/SampleREADME)
+
+
+#### Media 
+- [HeroImage]
+- [FnGLogp](https://www.freelogodesign.org/) Generated from freelogodesign.org
+- [No-Image-Placeholder](https://commons.wikimedia.org/wiki/File:No-Image-Placeholder.svg)
