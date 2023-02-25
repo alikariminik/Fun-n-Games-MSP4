@@ -149,7 +149,7 @@ WSGI_APPLICATION = 'funngames.wsgi.application'
 #     }
 
 DATABASES = {
-        'default': dj_database_url.parse("postgres://cmrbvqgs:mDiUWMavhr7C9df9F10H2BJNbHPzsjZf@trumpet.db.elephantsql.com/cmrbvqgs")
+        'default': dj_database_url.parse(os.environ.get("T_DATA_BASE"))
     }
 
 # Password validation
