@@ -31,12 +31,12 @@ html{
 /* Hero Image  */
 
 .hero-image-outer{
-    height: 350px;
+    height: 100%;
     width: 100%;
  } 
  .hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("/media/heroimage.jpg");
-    height: 95%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("/media/FnGHeroImage.jpg");
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

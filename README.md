@@ -207,8 +207,6 @@ When starting out, I had planned to allow for users to register accounts through
     - Used to store images and static files.
 
 ## Data Schema
-### Products
-
 
 ### Profiles
 #### UserProfile
@@ -277,6 +275,6 @@ Vigorous testing was conducted throughout the development process to ensure that
 
 
 #### Media 
-- [HeroImage]
-- [FnGLogp](https://www.freelogodesign.org/) Generated from freelogodesign.org
+- [FnGHeroImage](https://www.flickr.com/photos/30478819@N08/44289962475)
+- [FnGLogo](https://www.freelogodesign.org/) Generated from freelogodesign.org
 - [No-Image-Placeholder](https://commons.wikimedia.org/wiki/File:No-Image-Placeholder.svg)
