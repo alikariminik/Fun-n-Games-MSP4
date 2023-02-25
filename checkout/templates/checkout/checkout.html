@@ -42,7 +42,7 @@
                             {% if item.product.image_url %}
                             <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="80" width="80">
                             {% else %}
-                            <img class="img-fluid rounded" src="{% static 'media/images/no-image-placeholder.png' %}" height="80" width="80">
+                            <img class="img-fluid rounded" src="{{ MEDIA_URL }}no-image-placeholder.png" height="80" width="80">
                             {% endif %}
                         </div>
                         <div class="col-3 text-black">
@@ -143,7 +143,7 @@
                         {% if item.product.image_url %}
                         <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="80" width="80">
                         {% else %}
-                        <img class="img-fluid rounded" src="{% static 'media/images/no-image-placeholder.png' %}" height="80" width="80">
+                        <img class="img-fluid rounded" src="{{ MEDIA_URL }}no-image-placeholder.png" height="80" width="80">
                         {% endif %}
                     </div>
                     <div class="col-3">

@@ -23,7 +23,7 @@
                         </div>
                         {% else %}
                         <div class="image-container prod-image-container-sm">
-                            <img src="{% static 'media/images/no-image-placeholder.png' %}" class="card-img-top img-fluid"
+                            <img src="{{ MEDIA_URL }}no-image-placeholder.png" class="card-img-top img-fluid"
                                     alt="{{ product.name }}">
                         </div>
                         {% endif %}

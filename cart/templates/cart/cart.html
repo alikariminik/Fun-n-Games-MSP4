@@ -39,7 +39,7 @@
                         {% if item.product.image_url %}
                         <img class="img-fluid rounded" src="{{ item.product.image_url }}" height="150" width="150">
                         {% else %}
-                        <img class="img-fluid rounded" src="{% media 'images/no-image-placeholder.png' %}" height="150" width="150">
+                        <img class="img-fluid rounded" src="{{ MEDIA_URL }}no-image-placeholder.png" height="150" width="150">
                         {% endif %}
                     </td>
                     <!-- Product Name -->
