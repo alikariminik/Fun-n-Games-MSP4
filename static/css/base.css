@@ -35,7 +35,7 @@ html{
     width: 100%;
  } 
  .hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("/media/FnGHeroImage.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/media/FnGHeroImage.jpg");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
