@@ -10,7 +10,7 @@ from .forms import ProductForm
 def all_products(request):
     """ A view to show all product details """
     products = Product.objects.all()
-    deal = Deal.objects.get(pk=1)
+    deal = Deal.objects.get(id=1)
     coupon_codes = CouponCode.objects.get(pk=1)
     query = None
     categories = None
