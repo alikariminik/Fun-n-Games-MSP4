@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col-10 offset-1">
             <div class="row mt-1 mb-2"></div>
-            <div class="row"  max-height="40" max-width="30">
+            <div class="row" >
                 {% for product in products %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-2 pb-5">
                     <div class="card product-box">
@@ -47,7 +47,6 @@
                         {% endif %}
                         <a class="text-decoration-none text-black" href="{% url 'product_detail' product.id %}">
                             <div class="card-body my-card-body" id="div-text">
-                                <a class="text-decoration-none text-black" href="{% url 'product_detail' product.id %}">
                                 <h5 style="text-overflow: ellipsis;">{{ product.name }}</h5>
                             </div>
                         </a>
@@ -57,7 +56,7 @@
                                     {% if product.get_price == product.price %}
                                     <span>£{{ product.price }} </span>
                                         {% if product.get_deal_name != None %}
-                                            <span class="text-danger" style="font-size:medium;">&nbsp; {{ product.get_deal_name }}
+                                            <span class="text-danger" style="font-size:medium;">&nbsp; {{ product.get_deal_name }}</span>
                                         {% endif %}
                                     {% else %}
                                     <span class="text-danger" style="font-size:x-large;">£{{ product.get_price }}</span>

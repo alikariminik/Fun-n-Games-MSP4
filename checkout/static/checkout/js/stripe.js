@@ -7,7 +7,7 @@ var style = {
     color: '#000',
     fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
     fontSmoothing: 'antialiased',
-    fontSize: '16px',
+    fontSize: "16px",
     '::placeholder': {
       color: '#aab7c4'
     }
@@ -34,7 +34,7 @@ card.addEventListener("change", function (event) {
     $(errorDiv).html(errorMessage).addClass("text-danger");
   } else {
     errorDiv.textContent = ''
-  }
+  };
 });
 
 var form = document.getElementById('payment-form');
@@ -81,7 +81,7 @@ form.addEventListener('submit', function (ev) {
           city: $.trim(form.town_or_city.value),
           country: $.trim(form.country.value),
           postal_code: $.trim(form.postcode.value),
-          state: $.trim(form.county.value),
+          state: $.trim(form.county.value)
         }
       }
     }).then(function (result) {
@@ -108,4 +108,4 @@ form.addEventListener('submit', function (ev) {
   }).fail(function () {
     location.reload();
   })
-});
+});;

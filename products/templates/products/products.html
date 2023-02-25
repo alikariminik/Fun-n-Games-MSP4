@@ -16,9 +16,9 @@
         <div class="col text-center">
             <h2 class="logo-font">Products</h2>
             {% for c in current_categories %}
-                <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
-                    <h4 class="p-2 mt-2 text-black">{{ c.friendly_name }}</h4>
-                </a>
+            <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
+                <h4 class="p-2 mt-2 text-black">{{ c.friendly_name }}</h4>
+            </a>
             {% endfor %}
             <hr class="w-100 mb-1 my-auto">
         </div>
@@ -29,31 +29,34 @@
         </div>
         <div class="col-sm-6 d-flex justify-content-end" style="display: flex; padding-right: 20px;">
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
                     <i class="fa-sharp fa-solid fa-arrow-down-short-wide"></i> &nbsp; Sort
                 </button>
                 <ul class="dropdown-menu">
                     {% with params=request.GET.urlencode %}
-                  <li><a class="dropdown-item" href="{% relative_url 'price' 'sort' 'asc' 'direction' params %}">Sort by Price | Low to High</a></li>
-                  <li><a class="dropdown-item" href="{% relative_url 'price' 'sort' 'desc' 'direction' params %}">Sort by Price | High to Low</a></li>
+                    <li><a class="dropdown-item" href="{% relative_url 'price' 'sort' 'asc' 'direction' params %}">Sort
+                            by Price | Low to High</a></li>
+                    <li><a class="dropdown-item" href="{% relative_url 'price' 'sort' 'desc' 'direction' params %}">Sort
+                            by Price | High to Low</a></li>
                     {% endwith %}
                 </ul>
-              </div>
             </div>
         </div>
     </div>
+</div>
+<div class="container-fluid">
     <div class="row">
         <div class="col-10 offset-1">
             <div class="row mt-1 mb-2"></div>
-            <div class="row"  max-height="40" max-width="30">
+            <div class="row">
                 {% for product in products %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-2 pb-5">
                     <div class="card product-box">
                         {% if product.image_url %}
                         <div class="image-container px-1">
                             <a href="{% url 'product_detail' product.id %}">
-                                <img src="{{ product.image_url }}" class="card-img-top img-fluid"
-                                    alt="{{ product.name }}">
+                                <img src="{{ product.image_url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
                             </a>
                         </div>
                         {% else %}
@@ -66,7 +69,6 @@
                         {% endif %}
                         <a class="text-decoration-none text-black cat" href="{% url 'product_detail' product.id %}">
                             <div class="card-body my-card-body" id="div-text">
-                                <a class="text-decoration-none text-black" href="{% url 'product_detail' product.id %}"></a>
                                 <h5 style="text-overflow: ellipsis;">{{ product.name }}</h5>
                             </div>
                         </a>
@@ -74,13 +76,15 @@
                             <div class="row">
                                 <div class="col d-flex justify-content-center product-price-footer">
                                     {% if product.get_price == product.price %}
-                                    <span>£{{ product.price }} </span>
-                                        {% if product.get_deal_name != None %}
-                                            <span class="text-danger" style="font-size:medium;">&nbsp; {{ product.get_deal_name }}
-                                        {% endif %}
+                                    <span>£{{ product.price }}</span>
+                                    {% if product.get_deal_name != None %}
+                                    <span class="text-danger" style="font-size:medium;">&nbsp;
+                                        {{ product.get_deal_name }}</span>
+                                    {% endif %}
                                     {% else %}
                                     <span class="text-danger" style="font-size:x-large;">£{{ product.get_price }}</span>
-                                    <span class="text-secondary" style="font-size:medium;" >&nbsp;<del>£{{ product.price }}</del>
+                                    <span class="text-secondary"
+                                        style="font-size:medium;">&nbsp;<del>£{{ product.price }}</del>
                                         <span class="text-danger" style="font-size:medium;">&nbsp;-{{ coupon_codes }}</span>
                                     </span>
                                     {% endif %}
@@ -95,8 +99,10 @@
                                 {% if request.user.is_superuser %}
                                 <div class="row  my-1">
                                     <div class="col justify-content-center d-flex">
-                                        <a class="btn btn-success me-1 btn-sm" href="{% url 'edit_product' product.id %}">Edit Product</a>
-                                        <a class="btn btn-danger ms-1 btn-sm" href="{% url 'delete_product' product.id %}">Delete Product</a>
+                                        <a class="btn btn-success me-1 btn-sm"
+                                            href="{% url 'edit_product' product.id %}">Edit Product</a>
+                                        <a class="btn btn-danger ms-1 btn-sm"
+                                            href="{% url 'delete_product' product.id %}">Delete Product</a>
                                     </div>
                                 </div>
                                 {% endif %}
@@ -104,7 +110,7 @@
                         </div>
                     </div>
                 </div>
-                {% endfor %} 
+                {% endfor %}
             </div>
         </div>
     </div>

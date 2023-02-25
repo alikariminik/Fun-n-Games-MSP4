@@ -52,7 +52,7 @@
                             {% if item.product.get_price == item.product.price %}
                                 £{{ item.product.get_price }} x {{ item.quantity }} <br>
                                     {% if item.product.get_deal_name != None %}
-                                        <span class="text-danger" style="font-size:medium;"><b>{{ item.product.get_deal_name }}</b>
+                                        <span class="text-danger" style="font-size:medium;"><b>{{ item.product.get_deal_name }}</b></span>
                                     {% endif %}
                             {% else %}
                             £{{ item.product.get_price }} x {{ item.quantity }} <br>
@@ -124,7 +124,6 @@
                         <!-- Pay Now Button -->
                     <div class="pt-3 d-flex justify-content-center">  
                         <button id="btn-submit" class="btn btn-warning w-75 text-center">
-                            <div class="spinner hidden" id="spinner"></div>
                             <span id="button-text">Pay Now</span>
                         </button>
                     </div>
@@ -153,7 +152,7 @@
                         {% if item.product.get_price == item.product.price %}
                             £{{ item.product.get_price }} x {{ item.quantity }} <br>
                             {% if item.product.get_deal_name != None %}
-                                <span class="text-danger" style="font-size:medium;"><b>{{ item.product.get_deal_name }}</b>
+                                <span class="text-danger" style="font-size:medium;"><b>{{ item.product.get_deal_name }}</b></span>
                             {% endif %}
                         {% else %}
                         £{{ item.product.get_price }} x {{ item.quantity }} <br>

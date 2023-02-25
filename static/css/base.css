@@ -21,9 +21,6 @@ html{
     margin-right:10px;
 }
 
-.nav > li > i{
-    size:50px;
-}
 
 .top-nav-bg{
     background-color: #FFD100; 
@@ -64,7 +61,7 @@ html{
     height: 90px !important;
     text-align: left;
     font-size: 16px;
-    align-items: top;
+    align-items: center;
     justify-content: center;
     overflow: hidden;
     display: flex;

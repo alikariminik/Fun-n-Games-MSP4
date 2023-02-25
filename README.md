@@ -268,14 +268,16 @@ When starting out, I had planned to allow for users to register accounts through
 ### Validator Testing
 * HTML
     *   [W3C Validator](https://validator.w3.org/nu/)
-
+        * No major issues in HTML files. Only errors arise from Django templating.
 * CSS
-    *   [Jigsaw Validator](https://jigsaw.w3.org/css-validator/validator)
-
+    *   [Jigsaw Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+        * No issues in CSS files.
 * JavaScript
     *   [JSlint Validator](https://www.jslint.com/)
+        * No major issues in JS files.
 * Python
     *   [Python Validator](http://ww1.pep8online.com/)
+        * No major issues in python files.
 
 ### Responsiveness
 Vigorous testing was conducted throughout the development process to ensure that the site maintained responsiveness as more elements were added on. Using developer tools and adjusting screen dimensions, I have checked to ensure that all content displays clearly over a variety of screen sizes - primarily on the Mobile, Tablet and Monitors. As mentioned above, media queries were added to correct responsiveness failings from Materialize.
