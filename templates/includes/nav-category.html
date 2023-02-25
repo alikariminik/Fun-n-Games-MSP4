@@ -1,22 +1,23 @@
 <div class="offcanvas text-white " id="cat">
     <ul class="navbar-nav justify-content-evenly">
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'products' %}" id="all-products-link">
                 <strong>All Products</strong>
             </a>
-            <div class="dropdown-menu border-1" aria-labelledby="all-products-link">
-                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
-            </div>
         </li>
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-strong nav-link text-black mr-5" href="#" id="clothing-link"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <strong>Arts & Crafts</strong>
+                <strong>Toy Categories</strong>
             </a>
             <div class="dropdown-menu border-1" aria-labelledby="clothing-link">
-                <a href="{% url 'products' %}?category=arts_crafts" class="dropdown-item">Test</a>
+                <a href="{% url 'products' %}?category=arts_crafts" class="dropdown-item">Arts & Crafts</a>
+                <a href="{% url 'products' %}?category=building_toys" class="dropdown-item">Building Toys</a>
+                <a href="{% url 'products' %}?category=dolls_accessories" class="dropdown-item">Dolls & Accessories</a>
+                <a href="{% url 'products' %}?category=puzzles" class="dropdown-item">Puzzles</a>
+                <a href="{% url 'products' %}?category=stuffed_toys" class="dropdown-item">Stuffed Toys</a>
+                <a href="{% url 'products' %}?category=toy_figures" class="dropdown-item">Toy Figures & Playsets</a>
             </div>
         </li>
 
@@ -26,7 +27,7 @@
                 <strong>Building Toys</strong>
             </a>
             <div class="dropdown-menu border-1" aria-labelledby="homeware-link">
-                <a href="{% url 'products' %}?category=building_toys" class="dropdown-item">Test</a>
+                <a href="{% url 'products' %}?category=building_toys" class="dropdown-item">Building Toys</a>
             </div>
         </li>
 
@@ -36,7 +37,7 @@
                 <strong>Dolls & Accessories</strong>
             </a>
             <div class="dropdown-menu border-1" aria-labelledby="specials-link">
-                <a href="{% url 'products' %}?category=dolls_accessories" class="dropdown-item">Test</a>
+                <a href="{% url 'products' %}?category=dolls_accessories" class="dropdown-item">Dolls & Accessories</a>
             </div>
         </li>
 
@@ -46,7 +47,7 @@
                 <strong>Puzzles</strong>
             </a>
             <div class="dropdown-menu border-1" aria-labelledby="specials-link">
-                <a href="{% url 'products' %}?category=puzzles" class="dropdown-item">Test</a>
+                <a href="{% url 'products' %}?category=puzzles" class="dropdown-item">Puzzles</a>
             </div>
         </li>
 
@@ -56,7 +57,7 @@
                 <strong>Stuffed Toys</strong>
             </a>
             <div class="dropdown-menu border-1" aria-labelledby="specials-link">
-                <a href="{% url 'products' %}?category=stuffed_toys" class="dropdown-item">Test</a>
+                <a href="{% url 'products' %}?category=stuffed_toys" class="dropdown-item">Stuffed Toys</a>
             </div>
         </li>
 
@@ -66,17 +67,14 @@
                 <strong>Toy Figures & Playsets</strong>
             </a>
             <div class="dropdown-menu border-1" aria-labelledby="specials-link">
-                <a href="{% url 'products' %}?category=toy_figures" class="dropdown-item">Test</a>
+                <a href="{% url 'products' %}?category=toy_figures" class="dropdown-item">Toy Figures & Playsets</a>
             </div>
         </li>
 
-        <li class="nav-item dropdown bg-danger">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="dog-link" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item  bg-danger">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'sale' %}">
                 <strong>SALE</strong>
             </a>
-            <div class="dropdown-menu border-1" aria-labelledby="dog-link">
-                <a href="{% url 'sale' %}" class="dropdown-item">Test</a>
-            </div>
         </li>
     </ul>
   </div>
