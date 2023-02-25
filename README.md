@@ -29,7 +29,6 @@ This is the ReadMe for the website Fun-N-Games. Fun-N-Games is an e-commerce toy
     * [Deployment](#deployment)
     * [Credits](#credits)
         * [Resources](#resources)
-        * [Code](#code)
         * [Media](#media)
 
 ## UX
@@ -205,7 +204,8 @@ When starting out, I had planned to allow for users to register accounts through
     - The Relational Database was hosted on elephantsql and its data is obtained through the use of
 -   [AWS](https://aws.amazon.com/)
     - Used to store images and static files.
-
+-   [Stripe](https://stripe.com/gb)
+    - Used as the payment handler for product purchases.
 ## Data Schema
 
 ### Profiles
@@ -248,23 +248,117 @@ When starting out, I had planned to allow for users to register accounts through
 
 ## Testing 
 ### Behaviour Driven Development (BDD)
+- Testing of User Stories was conducted and documented in [bdd_testing.txt](tests/bdd_testing.txt)
 
 ### Validator Testing
 * HTML
-  *     [W3C Validator](https://validator.w3.org/nu/)
+    *   [W3C Validator](https://validator.w3.org/nu/)
 
 * CSS
-  *     [Jigsaw Validator](https://jigsaw.w3.org/css-validator/validator)
+    *   [Jigsaw Validator](https://jigsaw.w3.org/css-validator/validator)
 
-* JSlint
-  *     [JSlint Validator](https://www.jslint.com/)
+* JavaScript
+    *   [JSlint Validator](https://www.jslint.com/)
+* Python
+    *   [Python Validator](http://ww1.pep8online.com/)
 
 ### Responsiveness
 Vigorous testing was conducted throughout the development process to ensure that the site maintained responsiveness as more elements were added on. Using developer tools and adjusting screen dimensions, I have checked to ensure that all content displays clearly over a variety of screen sizes - primarily on the Mobile, Tablet and Monitors. As mentioned above, media queries were added to correct responsiveness failings from Materialize.
 
 ### Known Bugs
-- No known bugs at this time.
+- At times, the All Products page can load quite slowly due to the number of items being rendered on it. I explored paginating this view but in doing so, this broke other features such as as sorting and filtering so this was scrapped. Had I been aware of these performance issues in the live project, I would certainly have incorporated pagination into my project earlier on.
 
+## Deployment
+
+### Forking the GitHub Repository
+
+By forking the GitHub Repository you can make a copy of the original repository on your GitHub account to view and/or make changes without affecting the original repository. This can be done by folling these steps below:
+
+1. Log in to GitHub and locate the [GitHub
+   Repository](https://github.com/alikariminik/Fun-n-Games-MSP4)
+2. At the top of the Repository (not top of page) just above the "Settings"
+   Button on the menu, locate the "Fork" Button.
+3. Click the button (not the number to the right) and you should now have a copy
+   of the original repository in your GitHub account.
+
+### Making a Local Clone
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/alikariminik/Fun-n-Games-MSP4).
+2. Under the repository name, click "Code".
+3. To clone the repository using HTTPS, under "HTTPS", copy the link.
+4. Open your local terminal with git installed
+5. Change the current working directory to the location where you want the cloned directory to be created.
+6. Type `git clone`, and then paste the URL you copied in Step 3.
+
+    ```Terminal
+    ~$ git clone https://github.com/alikariminik/Fun-n-Games-MSP4.git
+    ```
+
+7. Press Enter. Your local clone will be created.
+
+    ```Terminal
+    $ git clone https://github.com/alikariminik/Fun-n-Games-MSP4.git
+    > Cloning into `test-dir`...
+    > remote: Counting objects: 10, done.
+    > remote: Compressing objects: 100% (8/8), done.
+    > remove: Total 10 (delta 1), reused 10 (delta 1)
+    > Unpacking objects: 100% (10/10), done.
+    ```
+
+### Deploying with Heroku
+
+1. Log in to [Heroku](https://www.heroku.com/) and  navigate to your personal app dashboard.
+2. At the top of the page locate the 'New' drop down, click it and then select 'Create new app'.
+3. Give your application a unique name, select the nearest region to your location and click the 'Create app' button.
+4. From the menu towards the top of the page select the 'Settings' section and click on 'Reveal Config Vars' in the Config vars section. Add in the Key:Value pairings for environment variables that are required for this app:
+ - `AWS_ACCESS_KEY_ID` : Generated from S3 IAM
+ - `AWS_SECRET_ACCESS_KEY` : Generated from S3 IAM 
+ - `DATABASE_URL` : Database URL for the hosting database - Elephant SQL. 
+ - `EMAIL_HOST_PASS` : Passcord generated from gmail 
+ - `EMAIL_HOST_USER` : Email address used to send emails from
+ - `HEROKU_POSTGRESQL_ORANGE_URL` : 
+ - `SECRET_KEY` : Your Django Secret Key
+ - `STRIPE_PUBLIC_KEY`: Stripe Public Key for handling payments
+ - `STRIPE_SECRET_KEY` : Stripe Private Key for handling payments
+ - `USE_AWS` : Set to True 
+
+5. Back in your GitPod Workspace, install install dj_database_url and psycopg2 and update requirements.txt file using the following commands
+    ```Terminal
+      $  pip3 install dj_database_url==0.5.0 psycopg2
+      $  pip freeze > requirements.txt
+    ```
+6. In your settings.py file, import dj_database_url underneath the import for os.
+7. Comment out DATABASES section in settings.py and instead wire up `DATABASES` =  'default': dj_database_url.parse('your-database-url-here'). Be sure not to commit this file with your database string in the code. This is temporary.
+8. In the terminal, run  `python3 manage.py showmigrations`
+9. Ensure that all migrations are unchecked.
+10. Migrate your database models to new database using `python3 manage.py migrate`
+11. Load in Fixtures using the following commands
+-   `python3 manage.py loaddata categories`
+-   `python3 manage.py loaddata products`
+
+12. Create a new superuser using the following command and follow the steps in the terminal : ` python3 manage.py createsuperuser`
+
+13. Uncomment out the Database code and delete `DATABASES` =  'default': dj_database_url.parse('your-database-url-here').
+14. In the terminal, Install Unicorn by using the following command and update requirements.txt.
+
+    ```Terminal
+      $  `pip3 install gunicorn`. 
+      $  pip freeze > requirements.txt
+    ```
+
+15. Create a Procfile and populate the first line with - "web: gunicorn funngames.wsgi:application"
+16. Login into Heroku through the terminal through using heroku_config.
+17. Enter your Heroku API key which can be obtained from Account Settings > API Key.
+18. Disable collect_static by typing in the terminal:
+
+  ```Terminal
+      $  `heroku config:set DISABLE_COLLECTSTATIC=1 --app fun-n-games`
+    ```
+19. Add `https://fun-n-games.herokuapp.com/`  to `ALLOWED_HOSTS` in settings.py.
+20. Add, commit and push changes to GitHub.
+21. Back on Heroku, in fun-n-games dashboard, select on the Deploy tab and connect this app to GitHub.
+22. Turn on Automatic Deploys. 
+23. Select Deploy Branch to ensure the most up-to-date git commit is in the heroku app.
 
 ## Credits
 
