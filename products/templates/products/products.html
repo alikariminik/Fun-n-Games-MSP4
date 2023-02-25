@@ -14,7 +14,12 @@
 <div class="container-fluid">
     <div class="row pt-5">
         <div class="col text-center">
-            <h1>All Toys</h1>
+            <h2 class="logo-font">Products</h2>
+            {% for c in current_categories %}
+                <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
+                    <h4 class="p-2 mt-2 text-black">{{ c.friendly_name }}</h4>
+                </a>
+            {% endfor %}
             <hr class="w-100 mb-1 my-auto">
         </div>
     </div>

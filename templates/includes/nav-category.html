@@ -1,12 +1,6 @@
 <div class="offcanvas text-white " id="cat">
     <ul class="navbar-nav justify-content-evenly">
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'products' %}" id="all-products-link">
-                <strong>All Products</strong>
-            </a>
-        </li>
-
-        <li class="nav-item dropdown">
             <a class="logo-font font-weight-strong nav-link text-black mr-5" href="#" id="clothing-link"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <strong>Toy Categories</strong>
@@ -17,56 +11,6 @@
                 <a href="{% url 'products' %}?category=dolls_accessories" class="dropdown-item">Dolls & Accessories</a>
                 <a href="{% url 'products' %}?category=puzzles" class="dropdown-item">Puzzles</a>
                 <a href="{% url 'products' %}?category=stuffed_toys" class="dropdown-item">Stuffed Toys</a>
-                <a href="{% url 'products' %}?category=toy_figures" class="dropdown-item">Toy Figures & Playsets</a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="homeware-link"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <strong>Building Toys</strong>
-            </a>
-            <div class="dropdown-menu border-1" aria-labelledby="homeware-link">
-                <a href="{% url 'products' %}?category=building_toys" class="dropdown-item">Building Toys</a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <strong>Dolls & Accessories</strong>
-            </a>
-            <div class="dropdown-menu border-1" aria-labelledby="specials-link">
-                <a href="{% url 'products' %}?category=dolls_accessories" class="dropdown-item">Dolls & Accessories</a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <strong>Puzzles</strong>
-            </a>
-            <div class="dropdown-menu border-1" aria-labelledby="specials-link">
-                <a href="{% url 'products' %}?category=puzzles" class="dropdown-item">Puzzles</a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <strong>Stuffed Toys</strong>
-            </a>
-            <div class="dropdown-menu border-1" aria-labelledby="specials-link">
-                <a href="{% url 'products' %}?category=stuffed_toys" class="dropdown-item">Stuffed Toys</a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <strong>Toy Figures & Playsets</strong>
-            </a>
-            <div class="dropdown-menu border-1" aria-labelledby="specials-link">
                 <a href="{% url 'products' %}?category=toy_figures" class="dropdown-item">Toy Figures & Playsets</a>
             </div>
         </li>
