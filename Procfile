@@ -1,1 +1,1 @@
-web: gunicorn fun-n-games.wsgi:application
+web: gunicorn funngames.wsgi:application
