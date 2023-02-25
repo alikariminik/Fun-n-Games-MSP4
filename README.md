@@ -15,12 +15,10 @@ This is the ReadMe for the website Fun-N-Games. Fun-N-Games is an e-commerce toy
         * [Wireframes](#Wireframes)
     * [The Surface Plane](#The-Surface-Plane)
         * [Design](#design)
-            * [Colour-Scheme](#colour-scheme)
-            * [Typography](#typography)
-            * [Imagery](#imagery)
+        * [Imagery](#imagery)
     * [Features](#features)
-        * [ParliamentAPI](#uk-parliament-api )
-        * [Planned / Scrapped Features](#planned--scrapped-features)
+        * [Planned / Scrapped Features](#planned/scrapped-features)
+            *[Features - Superuser](#features-superuser)
     * [DataSchema](#data-schema)
     * [Testing](#testing)
       * [Validator Testing](#validator-testing)
@@ -182,6 +180,23 @@ The area I felt this project lacked in the most was the design. I have relied ve
 
 #### Imagery
 The images for the products are obtained directly from where they are hosted online on Amazon. This was a downside of the dataset I found in that it did not have a file with images seperate. This can can effect performance when loading All Products as there are over 2000 images being downloaded. Additionally, if the product image was ever removed from its original hosting site (for which I have no control over) then this site would not be able to retrieve the product image. However, as a safeguard for this, there is a backup image. 
+
+### Features
+The application allows for account creation through the use off Django-Allauth which allows users to create accounts, sign out and log in to their created accounts. There is the functionality to filter by category, input search queries that returns matches to product names and descriptions and sorting by price: high - low and low - high. 
+
+Products can be added to a cart which will immediately cause the subtotal in the top right of a users screen to update including delivery fees if applicable. Users can make changes to their cart by adding, removing and editing the quantity of items. 
+
+These products in the cart can again be reviewed in the Checkout. They then proceed to checkout which creates a Stripe Payment Intent and card element which needs to be populated in order to place an order. If this fails, then the user will be notified of this through the use of Bootstrap Toasts (used across the site to display helpful messages). If the payment submission is successful, then the user is redirected to a checkout success screen which provides the user with an order number and order details below. 
+
+If the user is signed into an account, then they have the option to save default delivery details whilst in the checkout and this can later be updated in the account profile. This view also displays a users order history. 
+
+#### Features - Superuser
+Username: funngames-admin-super 
+Password: 2=gE6Jz/
+
+Superusers have full CRUD functionality qhich allows for new products to be added to the database, an exisiting products be edited and also products deletion.
+
+This is handy for when a store owner may wish to add a discount (Models.CouponCodes) or a special offer (Models.Deal) to a given product. 
 
 ### Planned / Scrapped Features
 When starting out, I had planned to allow for users to register accounts through their Social Media accounts. This is outlined in one of the User Stories. I believe that this feature would have been a nice touch and if it were utilised in a real store, then it is likely to increase the chance of custom as an account can usually be created in just a couple of taps / clicks. 

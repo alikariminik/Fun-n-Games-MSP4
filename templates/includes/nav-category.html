@@ -1,11 +1,11 @@
-<div class="offcanvas text-white " id="cat">
+<div class="offcanvas text-white ">
     <ul class="navbar-nav justify-content-evenly">
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-strong nav-link text-black mr-5" href="#" id="clothing-link"
+            <a class="logo-font font-weight-strong nav-link text-black mr-5" href="#" id="cat-nav-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <strong>Toy Categories</strong>
             </a>
-            <div class="dropdown-menu border-1" aria-labelledby="clothing-link">
+            <div class="dropdown-menu border-1" aria-labelledby="cat-nav-dropdown">
                 <a href="{% url 'products' %}?category=arts_crafts" class="dropdown-item">Arts & Crafts</a>
                 <a href="{% url 'products' %}?category=building_toys" class="dropdown-item">Building Toys</a>
                 <a href="{% url 'products' %}?category=dolls_accessories" class="dropdown-item">Dolls & Accessories</a>
