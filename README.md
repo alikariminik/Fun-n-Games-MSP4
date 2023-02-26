@@ -17,10 +17,11 @@ This is the ReadMe for the website Fun-N-Games. Fun-N-Games is an e-commerce toy
         * [Design](#design)
         * [Imagery](#imagery)
     * [Features](#features)
-        * [Planned / Scrapped Features](#planned/scrapped-features)
-            *[Features - Superuser](#features-superuser)
+        * [Planned / Scrapped Features](#planned-/-scrapped-features)
+        * [Features-Superuser](#Features-Superuser)
     * [DataSchema](#data-schema)
     * [Testing](#testing)
+      * [Behaviour Driven Development (BDD)](#Behaviour-Driven-Development-BDO)
       * [Validator Testing](#validator-testing)
       * [Responsiveness](#responsiveness)
       * [Known Bugs](#known-bugs)
@@ -190,7 +191,7 @@ These products in the cart can again be reviewed in the Checkout. They then proc
 
 If the user is signed into an account, then they have the option to save default delivery details whilst in the checkout and this can later be updated in the account profile. This view also displays a users order history. 
 
-#### Features - Superuser
+#### Features-Superuser
 Username: funngames-admin-super 
 Password: 2=gE6Jz/
 
@@ -198,7 +199,7 @@ Superusers have full CRUD functionality qhich allows for new products to be adde
 
 This is handy for when a store owner may wish to add a discount (Models.CouponCodes) or a special offer (Models.Deal) to a given product. 
 
-### Planned / Scrapped Features
+#### Planned / Scrapped Features
 When starting out, I had planned to allow for users to register accounts through their Social Media accounts. This is outlined in one of the User Stories. I believe that this feature would have been a nice touch and if it were utilised in a real store, then it is likely to increase the chance of custom as an account can usually be created in just a couple of taps / clicks. 
 
 ### Languages Used

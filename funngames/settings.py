@@ -29,7 +29,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 ALLOWED_HOSTS = ["fun-n-games.herokuapp.com", "localhost"]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-alikarimini-funngamesms-ylyi64ioxyy.ws-eu87.gitpod.io']
+    'https://8000-alikarimini-funngamesms-ylyi64ioxyy.ws-eu88.gitpod.io']
 
 # Application definition
 
@@ -228,6 +228,7 @@ STANDARD_DELIVERY = 10
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = "funngamestoys@example.com"
+
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
