@@ -39,6 +39,7 @@ This is the ReadMe for the website Fun-N-Games. Fun-N-Games is an e-commerce toy
 #### User Stories 
 * User Stories and their statuses can be found here [UserStories-GitHub-Projects](https://github.com/users/alikariminik/projects/1/views/1)
 
+#### Site Goals 
 
 
 ### The Scope Plane
@@ -185,7 +186,7 @@ The images for the products are obtained directly from where they are hosted onl
 ### Features
 The application allows for account creation through the use off Django-Allauth which allows users to create accounts, sign out and log in to their created accounts. There is the functionality to filter by category, input search queries that returns matches to product names and descriptions and sorting by price: high - low and low - high. 
 
-Products can be added to a cart which will immediately cause the subtotal in the top right of a users screen to update including delivery fees if applicable. Users can make changes to their cart by adding, removing and editing the quantity of items. 
+Products can be added to a cart which will immediately trigger the subtotal in the top right of a user's screen to update including delivery fees if applicable. Users can make changes to their cart by adding, removing and editing the quantity of items. 
 
 These products in the cart can again be reviewed in the Checkout. They then proceed to checkout which creates a Stripe Payment Intent and card element which needs to be populated in order to place an order. If this fails, then the user will be notified of this through the use of Bootstrap Toasts (used across the site to display helpful messages). If the payment submission is successful, then the user is redirected to a checkout success screen which provides the user with an order number and order details below. 
 
