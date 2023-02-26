@@ -20,6 +20,23 @@ import json
 # Create your views here.
 
 
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'cart': json.dumps(request.session.get('cart', {})),
+            'username': request.user,
+            'save_info': request.POST.get('save_info')
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, "Something went wrong. Your payment could not \
+        be processed this time. Please try again. ")
+        return HttpResponse(content=e, status=400)
+
+
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -156,20 +173,3 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
-
-
-@require_POST
-def cache_checkout_data(request):
-    try:
-        pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(pid, metadata={
-            'username': request.user,
-            'save_info': request.POST.get('save_info'),
-            'cart': json.dumps(request.session.get('cart', {}))
-        })
-        return HttpResponse(status=200)
-    except Exception as e:
-        messages.error(request, "Something went wrong. Your payment could not \
-        be processed this time. Please try again. ")
-        return HttpResponse(content=e, status=400)

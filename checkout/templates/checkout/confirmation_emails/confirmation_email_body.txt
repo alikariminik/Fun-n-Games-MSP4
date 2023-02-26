@@ -11,7 +11,7 @@ Order Total: ${{ order.grand_total }}
 
 Your order will be shipped to: 
 {{ order.street_address1 }}  
-{{ order.street_address1 }}  
+{{ order.street_address2 }}  
 {{ order.town_or_city }}
 {{ order.county }}.
 {{ order.postcode }}.

@@ -3,11 +3,11 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 
-
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
 
+import stripe
 
 import json
 import time
@@ -54,7 +54,7 @@ class StripeWH_Handler:
 
         billing_details = stripe_charge.billing_details
         shipping_details = intent.shipping
-        total = round(stripe_charge.amount / 100, 2)
+        grand_total = round(stripe_charge.amount / 100, 2)
 
         for field, value in shipping_details.address.items():
             if value == "":
@@ -62,8 +62,8 @@ class StripeWH_Handler:
 
         profile = None
         username = intent.metadata.username
-        if username != 'Anonymous':
-            profile = UserProfile.objects.get(user=username)
+        if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)
             if save_info:
                 profile.default_phone_number = \
                     shipping_details.phone,
@@ -79,14 +79,14 @@ class StripeWH_Handler:
                 profile.default_county = shipping_details.address.state,
                 profile.save()
 
-        order_exisits = False
+        order_exists = False
         attempt = 1
         while attempt <= 5:
             try:
-                order = Order.Objects.get(
+                order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
                     phone_number__iexact=shipping_details.phone,
-                    email__iexact=shipping_details.email,
+                    email__iexact=billing_details.email,
                     street_address1__iexact=shipping_details.address.line1,
                     street_address2__iexact=shipping_details.address.line2,
                     town_or_city__iexact=shipping_details.address.city,
@@ -97,23 +97,16 @@ class StripeWH_Handler:
                     original_cart=cart,
                     stripe_pid=pid,
                 )
-                order_exisits = True
+                order_exists = True
                 break
-                return HttpResponse(
-                    content=f'Webhood has been received: {event["type"]} | \
-                    SUCCESS: Verified order already in database', status=200)
-
-                return HttpResponse(
-                    content=f'Webhook received: {event["type"]}',
-                    status=200)
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
-        if order_exisits:
+        if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f'Webhood has been received: {event["type"]} | \
-                SUCCESS: Verified order already in database', status=200)
+                content=f'Webhook has been received: {event["type"]} | \
+                    SUCCESS: Verified order already in database', status=200)
         else:
             order = None
             try:
@@ -121,20 +114,19 @@ class StripeWH_Handler:
                     full_name=shipping_details.name,
                     user_profile=profile,
                     phone_number=shipping_details.phone,
-                    email=shipping_details.email,
+                    email=billing_details.email,
                     street_address1=shipping_details.address.line1,
                     street_address2=shipping_details.address.line2,
                     town_or_city=shipping_details.address.city,
                     country=shipping_details.address.country,
                     postcode=shipping_details.address.postal_code,
                     county=shipping_details.address.state,
-                    grand_total=grand_total,
                     original_cart=cart,
                     stripe_pid=pid,
                 )
-                for product_id, product_data in json.loads(cart).products():
+                for product_id, product_data in json.loads(cart).product():
                     product = Product.objects.get(id=product_id)
-                    if isinstance(product_data, int):
+                    if isinstance(product_id, int):
                         order_line_item = OrderLineItem(
                             order=order,
                             product=product,
@@ -147,7 +139,6 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
-
         self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook has been received: \
