@@ -26,6 +26,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-5  offset-md-1">
             <p>Your saved Delivery Details</p>
+            <!-- Default Delivery Details -->
             <form method="POST" action="{% url 'profile' %}" id="profile-update-form">
                 {% csrf_token %}
                 {{ form|crispy }}
@@ -33,6 +34,7 @@
             </form>
         </div>
         <div class="col-sm-12 col-md-5 offset-md-1">
+            <!-- Order History -->
             <p>Order History</p>
             <div class="order-history table-responsive" style="max-height: 400px; overflow-y: auto;">
                 <table class="table table-sm table-borderless">
