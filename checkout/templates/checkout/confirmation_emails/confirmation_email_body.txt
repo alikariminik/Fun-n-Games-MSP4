@@ -5,9 +5,9 @@ Thank you for your purchase. Please find below your order details:
 Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
-Order Sub-Total: ${{ order.order_total }}
-Delivery Fees: ${{ order.delivery_cost }}
-Order Total: ${{ order.grand_total }}
+Order Sub-Total: £{{ order.order_total }}
+Delivery Fees: £{{ order.delivery_cost }}
+Order Total: £{{ order.grand_total }}
 
 Your order will be shipped to: 
 {{ order.street_address1 }}  

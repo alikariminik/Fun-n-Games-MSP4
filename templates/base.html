@@ -39,11 +39,13 @@
     <header class="container-fluid fixed-top top-nav-bg">
       <div class="row navbar navbar-expand-md top-nav-bg">
         <div class="col-xs-4 col-md-3 mx-auto py-1 py-lg-0 text-center">
+          <!-- Fun'N'Games Logo and link to home -->
             <a href="{% url 'home' %}" class="nav-link navbar-brand" id="logofng">
               <img src="{{ MEDIA_URL }}FnGLogo.png" id=logo alt="Bootstrap" >
             </a>
         </div>
         <div class="col-6 col-sm-4 col-md-6 order-sm-2 order-2 py-1 py-lg-0">
+          <!-- Search Query -->
           <form method="GET" action="{% url 'products' %}">
               <div class="input-group w-100">
                   <input class="form-control border-5 border-danger" type="text" name="q" placeholder="Search for...">
@@ -63,6 +65,7 @@
               <a class="nav-link text-black" href="#" id="account-options" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="text-center">
                   <div><i class="fa-solid fa-user fa-lg"></i></div>
+                  <!-- Account Icon -->
                   <p class="my-0">Account</p>
                 </div>
               </a>
@@ -84,6 +87,7 @@
                 <div class="text-center">
                     <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
                     <p class="my-0">
+                      <!-- Checkout Icon and Subtotal -->
                         {% if sub_total %}
                             <span>£{{ sub_total|floatformat:2 }}</span>
                             <span><br><smaller>( {{ product_count }} )</small></span>
@@ -110,6 +114,7 @@
 
     {% if messages %}
         <div class="message-container">
+          <!-- Toast Messages -->
           {% for message in messages %}
           {% with message.level as level %}
               {% if level == 40 %}
