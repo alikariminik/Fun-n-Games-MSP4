@@ -40,7 +40,7 @@ This is the ReadMe for the website Fun-N-Games. Fun-N-Games is an e-commerce toy
 * User Stories and their statuses can be found here [UserStories-GitHub-Projects](https://github.com/users/alikariminik/projects/1/views/1)
 
 #### Site Goals 
-
+The sites fundamental goal is to display the store's products in a clear way and allow users to review the products details and add them to their cart. Users will have the option to create an account which will allow for registered users to save delivery information for faster checkout and review past orders. Unregistered Users will still be able to access the store and make purchases.
 
 ### The Scope Plane
 Features Planned
