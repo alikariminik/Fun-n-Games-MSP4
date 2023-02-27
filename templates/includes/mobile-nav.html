@@ -12,6 +12,7 @@
                 <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="mob-nav-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <strong>Toy Categories</strong>
                 </a>
+                <!-- Dropdown for categories for mobile -->
                 <div class="dropdown-menu border-0" aria-labelledby="mob-nav-dropdown">
                     <a href="{% url 'products' %}?category=arts_crafts" class="dropdown-item">Arts & Crafts</a>
                     <a href="{% url 'products' %}?category=building_toys" class="dropdown-item">Building Toys</a>
@@ -31,6 +32,7 @@
             <li class="nav-item pt-5">
                 <a class="nav-link" href="#" data-bs-target=account-options data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>My Account</strong></a>
                 <div class="dropdown-menu border-0" aria-labelledby="account-options">
+                    <!-- Account Section for Mobile -->
                     {% if request.user.is_authenticated %}
                         {% if request.user.is_superuser %}
                             <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>

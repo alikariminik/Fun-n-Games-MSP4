@@ -140,7 +140,7 @@
     </div>
     <div class="row pt-5">
         <div class="col justify-content-center" style="display: flex;">
-            <a type="button" class="btn btn-info" href="{% url 'products' %}">Back to Store <i class="fa-solid fa-shop"></i></a>
+            <a  class="btn btn-info" href="{% url 'products' %}">Back to Store <i class="fa-solid fa-shop"></i></a>
         </div>
     </div>
 </div>
@@ -156,7 +156,7 @@
     $('.update-qty').click(function(e) {
         var form = $(this).prev('.update-form');
         form.submit();
-    })
+    });
     $('.remove-qty').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var prodId = $(this).attr('id').split('remove_')[1];

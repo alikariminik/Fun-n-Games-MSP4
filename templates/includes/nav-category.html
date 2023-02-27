@@ -6,6 +6,7 @@
                 <strong>Toy Categories</strong>
             </a>
             <div class="dropdown-menu border-1" aria-labelledby="cat-nav-dropdown">
+                <!-- Dropdown categories -->
                 <a href="{% url 'products' %}?category=arts_crafts" class="dropdown-item">Arts & Crafts</a>
                 <a href="{% url 'products' %}?category=building_toys" class="dropdown-item">Building Toys</a>
                 <a href="{% url 'products' %}?category=dolls_accessories" class="dropdown-item">Dolls & Accessories</a>
@@ -17,6 +18,7 @@
         </li>
 
         <li class="nav-item  bg-danger">
+            <!-- Link to Sale -->
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'sale' %}">
                 <strong>SALE</strong>
             </a>

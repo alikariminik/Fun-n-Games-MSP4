@@ -5,40 +5,40 @@
         var currentQtyValue = parseInt($(`#id_qty_${itemId}`).val());
         var minusDisabled = currentQtyValue < 2;
         var plusDisabled = currentQtyValue > 98;
-        $(`#decrease-qty_${itemId}`).prop('disabled', minusDisabled);
-        $(`#increase-qty_${itemId}`).prop('disabled', plusDisabled);
+        $(`#decrease-qty_${itemId}`).prop("disabled", minusDisabled);
+        $(`#increase-qty_${itemId}`).prop("disabled", plusDisabled);
     }
 
     // Check whether to enable/disable quantity input on page load
-    var allQtyInputs = $('.qty_input');
+    var allQtyInputs = $(".qty_input");
     for (var i = 0; i < allQtyInputs.length; i++){
-        var itemId = $(allQtyInputs[i]).data('item_id');
+        var itemId = $(allQtyInputs[i]).data("item_id");
         handleEnableDisable(itemId);
     }
 
     // Check whether enable/disable increase/decrease buttons every time the input is changed
-    $('.qty_input').change(function() {
-        var itemId = $(this).data('item_id');
+    $(".qty_input").change(function() {
+        var itemId = $(this).data("item_id");
         handleEnableDisable(itemId);
     });
 
     // Increase quantity
-        $('.increase-qty').click(function(e) {
+        $(".increase-qty").click(function(e) {
        e.preventDefault();
-       var qtyInput = $(this).closest('.input-group').find('.qty_input')[0];
+       var qtyInput = $(this).closest(".input-group").find(".qty_input")[0];
        var currentQtyValue = parseInt($(qtyInput).val());
        $(qtyInput).val(currentQtyValue + 1);
-       var itemId = $(this).data('item_id');
+       var itemId = $(this).data("item_id");
        handleEnableDisable(itemId);
     });
 
     // Decrease quantity
-        $('.decrease-qty').click(function(e) {
+        $(".decrease-qty").click(function(e) {
        e.preventDefault();
-       var qtyInput = $(this).closest('.input-group').find('.qty_input')[0];
+       var qtyInput = $(this).closest(".input-group").find(".qty_input")[0];
        var currentQtyValue = parseInt($(qtyInput).val());
        $(qtyInput).val(currentQtyValue - 1);
-       var itemId = $(this).data('item_id');
+       var itemId = $(this).data("item_id");
        handleEnableDisable(itemId);
     });
 </script>
