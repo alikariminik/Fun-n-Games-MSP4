@@ -123,8 +123,26 @@ User Story:
 Acceptance Criteria:
 * Delivery details should be able to be updated without needing to place an order.
 
-Implementations:
-* In the User's Profile page, where saved delivery details are stored, there should be an option to update these details.
+Implementation:
+* In the User's Profile page, where saved delivery details are stored, there should be an option to update these details. 
+
+User Story:
+> As a User, I want to have my saved delivery information auto-populate the checkout form if I have saved them to my profile.
+
+Acceptance Criteria:
+* Users should be able to make updates to their saved deliery information whenever they want without the need to place an order.
+
+Implementation:
+* An option on the user's profile page to review and update delivery information
+
+User Story:
+> As a User, I want to receive email confirmations when I place an order so that I know the order was placed successfully.
+
+Acceptance Criteria:
+* An auto email sent out on confirmation that the payment has been successful.
+
+Implementation:
+* Calling Django's send mail function, when the Stripe Webhook confirms that payment has been successful. 
 
 User Story:
 > As a Store Owner, I want to be able to add new products to my store so that I can offer the news toys to customers

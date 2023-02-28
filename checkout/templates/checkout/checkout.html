@@ -33,7 +33,7 @@
             <h6 class="float-start card-subtitle mb-2">Delivery: <span class="text-end">&nbsp;£{{ delivery }}</span></h6>
             {% endif %}
             <h5 class="float-start card-title"><b>Total:&nbsp;£{{ total }}</b></h5>
-            <a class="float-end" data-bs-toggle="collapse" href="#collapseExample" id="order-details-toggle" role="button" aria-expanded="false" aria-controls="collapseExample">Show Details</a>
+            <a class="float-end" data-bs-toggle="collapse" href="#collapseExample" id="order-details-toggle" role="button" aria-expanded="false" aria-controls="collapseExample">Show Cart Details</a>
             <div class="collapse" id="collapseExample">
                 <div class="card-body">
                     {% for item in cart_items %}
@@ -67,6 +67,9 @@
                             <span class="text-secondary"><del>£{{ item.product_non_discount }}</del></span>
                             {% endif %}
                         </div>
+                        <a href="{% url 'view_cart' %}" class="btn btn-secondary">
+                            <span class="font-weight-bold">Edit Cart</span>
+                        </a>
                     </div>
                     {% endfor %}
                 </div>
@@ -206,9 +209,9 @@ document.getElementById("order-details-toggle").addEventListener("click", change
    function changeText() {
     textToggle = document.getElementById("order-details-toggle");
     if (textToggle.classList.contains("collapsed")) {
-        textToggle.innerHTML = "Show Details"
+        textToggle.innerHTML = "Show Cart Details"
     } else {
-        textToggle.innerHTML = "Hide Details"
+        textToggle.innerHTML = "Hide Cart Details"
     }
    }
 
