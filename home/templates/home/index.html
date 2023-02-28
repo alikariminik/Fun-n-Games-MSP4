@@ -10,8 +10,13 @@
 {% endblock %}
 
 {% block content %}
-<main class="hero-image-outer">
+<div class="hero-image-outer">
     <div class="hero-image">
+        <div class="row">
+            <div class="col-5 col-md-2 offset-5 offset-md-7 home-text">The Best toy store in the world just got a whole lot cheaper! <br>
+                <a href="{% url 'sale' %}" class="btn-lg btn btn-warning home-btn">Shop Our Sale!</a>
+            </div>
+        </div>
     </div>
-</main>
+</div>
 {% endblock %}
