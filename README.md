@@ -270,7 +270,7 @@ When starting out, I had planned to allow for users to register accounts through
 ### Validator Testing
 * HTML
     *   [W3C Validator](https://validator.w3.org/nu/)
-        * No major issues in HTML files. Only errors arise from Django templating.
+        * No major issues in HTML files.
 * CSS
     *   [Jigsaw Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
         * No issues in CSS files.
@@ -278,11 +278,11 @@ When starting out, I had planned to allow for users to register accounts through
     *   [JSlint Validator](https://www.jslint.com/)
         * No major issues in JS files.
 * Python
-    *   [Python Validator](http://ww1.pep8online.com/)
-        * No major issues in python files.
+    *   [Python Validator] Pycodestyle in GitPod 
+        * No major issues in python files apart from one line in Setting.py being over 79 characters.
 
 ### Responsiveness
-Vigorous testing was conducted throughout the development process to ensure that the site maintained responsiveness as more elements were added on. Using developer tools and adjusting screen dimensions, I have checked to ensure that all content displays clearly over a variety of screen sizes - primarily on the Mobile, Tablet and Monitors. As mentioned above, media queries were added to correct responsiveness failings from Materialize.
+Vigorous testing was conducted throughout the development process to ensure that the site maintained responsiveness as more elements were added on. Using developer tools and adjusting screen dimensions, I have checked to ensure that all content displays clearly over a variety of screen sizes - primarily on the Mobile, Tablet and Monitors. As mentioned above, media queries were added to correct responsiveness failings from Bootstrap.
 
 ### Known Bugs
 - At times, the All Products page can load quite slowly due to the number of items being rendered on it. I explored paginating this view but in doing so, this broke other features such as as sorting and filtering so this was scrapped. Had I been aware of these performance issues in the live project, I would certainly have incorporated pagination into my project earlier on.
