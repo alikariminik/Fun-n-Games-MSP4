@@ -37,7 +37,7 @@ def all_products(request):
             categories = Category.objects.filter(name__in=categories)
 
         if 'q' in request.GET:
-            query = request.GET['q']
+            query = request.GET['q'].strip()
             if not query:
                 messages.error(
                     request, "You haven't entered anything to search for!")
