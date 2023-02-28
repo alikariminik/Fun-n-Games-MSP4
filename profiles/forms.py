@@ -2,6 +2,7 @@ from django import forms
 from .models import UserProfile
 
 
+#  Code Institute Lessons - Boutique Ado
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile

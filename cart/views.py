@@ -12,6 +12,7 @@ def view_cart(request):
     return render(request, 'cart/cart.html')
 
 
+#  Code Institute Lessons - Boutique Ado
 def add_to_cart(request, product_id):
     """ Add a quantity of the specified product to the cart """
     product = Product.objects.get(pk=product_id)
@@ -35,6 +36,7 @@ def add_to_cart(request, product_id):
     return redirect(redirect_url)
 
 
+#  Code Institute Lessons - Boutique Ado
 def adjust_cart(request, product_id):
     """Adjust the quantity of the specified product to the specified amount"""
 
@@ -50,6 +52,7 @@ def adjust_cart(request, product_id):
     return redirect(reverse('view_cart'))
 
 
+#  Code Institute Lessons - Boutique Ado
 def remove_from_cart(request, product_id):
     """Remove the product from the cart"""
 

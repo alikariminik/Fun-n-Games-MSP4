@@ -355,7 +355,7 @@ By forking the GitHub Repository you can make a copy of the original repository 
 -   `python3 manage.py loaddata categories`
 -   `python3 manage.py loaddata products`
 
-12. Create a new superuser using the following command and follow the steps in the terminal : ` python3 manage.py createsuperuser`
+12. Created a new superuser using the following command and follow the steps in the terminal : ` python3 manage.py createsuperuser`
 
 13. Uncomment out the Database code and delete `DATABASES` =  'default': dj_database_url.parse('your-database-url-here').
 14. In the terminal, Install Unicorn by using the following command and update requirements.txt.
@@ -380,6 +380,9 @@ By forking the GitHub Repository you can make a copy of the original repository 
 23. Select Deploy Branch to ensure the most up-to-date git commit is in the heroku app.
 
 ## Credits
+
+#### Code
+In developing this project, I have utilised and adapted Code Institute's code from the Boutique Ado lessons in order to enable correct and smooth functionality that would be expected from an e-commerce store. The code has been attributed with the comment: "Code Institute Lessons - Boutique Ado" where applicable.  
 
 #### Resources 
 - Code Institute course material

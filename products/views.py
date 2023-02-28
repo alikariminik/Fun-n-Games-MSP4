@@ -62,11 +62,11 @@ def product_detail(request, product_id):
     """ A view to show an individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-    discount = CouponCode
+    coupon_codes = CouponCode.objects.get(id=1)
 
     context = {
         "product": product,
-        "discount": discount,
+        'coupon_codes': coupon_codes,
     }
 
     return render(request, "products/product_detail.html", context)

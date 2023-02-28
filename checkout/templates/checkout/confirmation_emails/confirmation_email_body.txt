@@ -14,7 +14,7 @@ Your order will be shipped to:
 {{ order.street_address2 }}  
 {{ order.town_or_city }}
 {% if order.county is not None %} {{ order.county }} {% endif %}
-{% if order.postcode is not None %} {{ order.postcode }} {% endif %}
+{% if order.postcode is not None %}{{ order.postcode }} {% endif %}
 {{ order.country }}
 
 We've got your phone number on file as {{ order.phone_number }}.
