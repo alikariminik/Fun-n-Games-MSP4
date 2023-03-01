@@ -185,11 +185,18 @@ Implementation:
 I utilised Balsamiq to produce my wireframes of how the app homescreen would appear across different devices. This was not stuck to.l
 
 Mobile Device Wireframes 
- ![Mobile Device Home](media/wireframes/wireframe-desktop-home.png)
+ ![Mobile Device Home](media/wireframes/Mobile-Home.png)
+ ![Mobile Device Products](media/wireframes/Mobile-Products.png)
+ ![Mobile Device Cart](media/wireframes/Mobile-Cart.png)
 Tablet Device Wireframes
- ![Tablet Device Home](media/wireframes/wireframe-desktop-home.png)
+ ![Tablet Device Home](media/wireframes/Tablet-Home.png)
+ ![Tablet Device Products](media/wireframes/Tablet-Products.png)
+ ![Tablet Device Cart](media/wireframes/Tablet-Cart.png)
 Desktop Device Wireframes
- ![Desktop Device Home](media/wireframes/wireframe-desktop-home.png)
+ ![Desktop Device Home](media/wireframes/Desktop-Home.png)
+ ![Desktop Device Products](media/wireframes/Desktop-Products.png)
+ ![Desktop Device Cart](media/wireframes/Desktop-Cart.png)
+
 
 
 ### The Surface Plane
