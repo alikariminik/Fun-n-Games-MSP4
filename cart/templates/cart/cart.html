@@ -97,8 +97,13 @@
                             {% if item.product.get_deal_name == None %}
                             <b>£{{ item.product_sub_total }}</b>
                             {% else %}
-                            <b class="text-danger">£{{ item.product_sub_total }}</b><br>                     
-                            <span class="text-secondary"><del>£{{ item.product_non_discount }}</del></span>
+                                {% if item.quantity < 3 %}
+                                    <b class="text-info">£{{ item.product_sub_total }}</b><br>
+                                    <span class="text-danger">Deal Missed!</span>  
+                                {% else %}
+                                    <b class="text-danger">£{{ item.product_sub_total }}</b><br>                     
+                                    <span class="text-secondary"><del>£{{ item.product_non_discount }}</del></span>
+                                {% endif %}
                             {% endif %}
                         </td>
                     </tr>
