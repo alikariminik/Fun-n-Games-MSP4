@@ -218,9 +218,6 @@ These products in the cart can again be reviewed in the Checkout. They then proc
 If the user is signed into an account, then they have the option to save default delivery details whilst in the checkout and this can later be updated in the account profile. This view also displays a users order history. 
 
 #### Features-Superuser
-Username: funngames-admin-super 
-Password: 2=gE6Jz/
-
 Superusers have full CRUD functionality qhich allows for new products to be added to the database, an exisiting products be edited and also products deletion.
 
 This is handy for when a store owner may wish to add a discount (Models.CouponCodes) or a special offer (Models.Deal) to a given product. 
@@ -304,7 +301,7 @@ When starting out, I had planned to allow for users to register accounts through
         * No major issues in JS files.
 * Python
     *   [Python Validator] Pycodestyle in GitPod 
-        * No major issues in python files apart from one line in Setting.py being over 79 characters.
+        * No issues issues in python files.
 
 ### Responsiveness
 Vigorous testing was conducted throughout the development process to ensure that the site maintained responsiveness as more elements were added on. Using developer tools and adjusting screen dimensions, I have checked to ensure that all content displays clearly over a variety of screen sizes - primarily on the Mobile, Tablet and Monitors. As mentioned above, media queries were added to correct responsiveness failings from Bootstrap.

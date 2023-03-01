@@ -13,7 +13,7 @@ import json
 import time
 
 
-#  Code Institute Lessons - Boutique Ado 
+#  Code Institute Lessons - Boutique Ado
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
