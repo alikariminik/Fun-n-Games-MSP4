@@ -140,6 +140,8 @@ html{
 }
 
 
+/***************** Media Queries *******************/
+
 
 @media (max-width: 577px) {
     #logo{
@@ -151,6 +153,27 @@ html{
     }
     .prod-image-container-sm{
         height: 280px;
+    }
+    .hero-image-outer{
+        height: 750px;
+        width: 100%;
+        z-index:-9999999;
+     } 
+     .home-text {
+        position: relative;
+        top: 40px;
+        right:20px;
+        font-size: 28px;
+        color:fuchsia;
+        height: 100px;
+        width: 100px;
+        text-transform: capitalize;
+        border-width: medium;
+        border:4px black 4px;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: fit-content;
+        width: fit-content;
     }
 }
 
