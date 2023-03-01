@@ -37,7 +37,7 @@ This is the ReadMe for the website Fun-N-Games - an e-commerce toystore built us
 
 
 #### User Stories 
-* User Stories and their statuses can be found here [UserStories-GitHub-Projects](https://github.com/users/alikariminik/projects/1/views/1). Additionally, User Stories are outlined under the Structure Plane and testing for them can be found under Testing
+* User Stories and their statuses can be found here [UserStories-GitHub-Projects](https://github.com/users/alikariminik/projects/1/views/1). Additionally, User Stories are outlined under the Structure Plane and testing for them can be found under Testing.
 
 #### Site Goals 
 The sites fundamental goal is to display the store's products in a clear way and allow users to review the products details and add them to their cart. Users will have the option to create an account which will allow for registered users to save delivery information for faster checkout and review past orders. Unregistered Users will still be able to access the store and make purchases.
@@ -206,14 +206,16 @@ The area I felt this project lacked in the most was the design. I have relied ve
 ![StoreLogo](https://www.freelogodesign.org/)
 
 #### Imagery
-The images for the products are obtained directly from where they are hosted online on Amazon. This was a downside of the dataset I found in that it did not have a file with images seperate. This can can effect performance when loading All Products as there are over 2000 images being downloaded. Additionally, if the product image was ever removed from its original hosting site (for which I have no control over) then this site would not be able to retrieve the product image. However, as a safeguard for this, there is a backup image. 
+The hero image on the home screen displays a wide variety of toys and colours which are eyecatching and pleasant to look at. The images for the products are obtained directly from where they are hosted online on Amazon. This was a downside of the dataset I found in that it did not have a file with images seperate. This can can effect performance when loading All Products as there are over 2000 images being downloaded. Additionally, if the product image was ever removed from its original hosting site (for which I have no control over) then this site would not be able to retrieve the product image. However, as a safeguard for this, there is a backup image. 
 
 ### Features
 The application allows for account creation through the use off Django-Allauth which allows users to create accounts, sign out and log in to their created accounts. There is the functionality to filter by category, input search queries that returns matches to product names and descriptions and sorting by price: high - low and low - high. 
 
 Products can be added to a cart which will immediately trigger the subtotal in the top right of a user's screen to update including delivery fees if applicable. Users can make changes to their cart by adding, removing and editing the quantity of items. 
 
-These products in the cart can again be reviewed in the Checkout. They then proceed to checkout which creates a Stripe Payment Intent and card element which needs to be populated in order to place an order. If this fails, then the user will be notified of this through the use of Bootstrap Toasts (used across the site to display helpful messages). If the payment submission is successful, then the user is redirected to a checkout success screen which provides the user with an order number and order details below. 
+These products in the cart can again be reviewed in the Checkout. They then proceed to checkout which creates a Stripe Payment Intent and card element which needs to be populated in order to place an order. If this fails, then the user will be notified of this through the use of Bootstrap Toasts (used across the site to display helpful messages). If the payment submission is successful, then the user is redirected to a checkout success screen which provides the user with an order number and order details below.
+
+Users can view their order history in their Profile as well as update their delivery information without placing an order.
 
 If the user is signed into an account, then they have the option to save default delivery details whilst in the checkout and this can later be updated in the account profile. This view also displays a users order history. 
 
