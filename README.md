@@ -1,8 +1,8 @@
 # Fun-N-Games README
-Here is a link to the website [Fun-N-Games](https://fun-n-games.herokuapp.com/home)
+Here is a link to the website [Fun-N-Games](https://fun-n-games.herokuapp.com/)
 
 ## What is this ReadME for?
-This is the ReadMe for the website Fun-N-Games. Fun-N-Games is an e-commerce toystore website built using Django an application with the use of Python, HTML, CSS, JavaScript. The Products, User Accounts and Models are in a SQL Elephant Database and static files such as images and CSS are stored with AWS. 
+This is the ReadMe for the website Fun-N-Games - an e-commerce toystore built using Django along with the use of Python, HTML, CSS, JavaScript. The Products, User Accounts and Models are stored in a SQL Elephant Database and static files such as images and CSS are stored within a S3 Bucket on AWS. 
 
 ## Table of Contents
 * [User Experience Design (UX)](#UX)
@@ -33,11 +33,11 @@ This is the ReadMe for the website Fun-N-Games. Fun-N-Games is an e-commerce toy
 ## UX
 
 ### The Strategy Plane
-* I decided on making an E-Commerce Toy Store for my Milestone Project when browsing for a suitable dataset that fit the requirements of my project. After having spent a good few hours - longer than I had hoped to do so, I came across [Amazon-Products-Dataset](https://www.kaggle.com/datasets/promptcloud/amazon-product-dataset-2020) which was filled with thousands of different products all with photos and prices as well as details on the products. After scanning through this dataset, I noticed that there was an abundance of Toy Products in here so I decided to cut the other 8000 or so items out of this dataset and settle on a Toy Store.
+* I decided on making an E-Commerce Toy Store for my Milestone Project when browsing for a suitable dataset that fit the requirements of my project. After having spent a good few hours - longer than I had hoped to do so, I came across [Amazon-Products-Dataset](https://www.kaggle.com/datasets/promptcloud/amazon-product-dataset-2020) which was filled with thousands of different products, all with accompanying photos and prices aswell as descriptions on the products themselves. After surveying through this dataset, I noticed that there was an abundance of Toy Products in here so I decided to cut the other 8000 or so items out of this dataset and settle on getting to work building this fictional Toy Store.
 
 
 #### User Stories 
-* User Stories and their statuses can be found here [UserStories-GitHub-Projects](https://github.com/users/alikariminik/projects/1/views/1)
+* User Stories and their statuses can be found here [UserStories-GitHub-Projects](https://github.com/users/alikariminik/projects/1/views/1). Additionally, User Stories are outlined under the Structure Plane and testing for them can be found under Testing
 
 #### Site Goals 
 The sites fundamental goal is to display the store's products in a clear way and allow users to review the products details and add them to their cart. Users will have the option to create an account which will allow for registered users to save delivery information for faster checkout and review past orders. Unregistered Users will still be able to access the store and make purchases.
