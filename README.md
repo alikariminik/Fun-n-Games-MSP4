@@ -25,6 +25,7 @@ This is the ReadMe for the website Fun-N-Games - an e-commerce toystore built us
       * [Validator Testing](#validator-testing)
       * [Responsiveness](#responsiveness)
       * [Known Bugs](#known-bugs)
+      * [Fixed Bugs](#fixed-bugs)
     * [Deployment](#deployment)
     * [Credits](#credits)
         * [Resources](#resources)
@@ -311,6 +312,17 @@ Vigorous testing was conducted throughout the development process to ensure that
 ### Known Bugs
 - At times, the payment_intent.succeeded can fail which results in the confirmation email not being sent out. Other times it works and the email is sent and received instantly. In Development, the webhook succeeds 100% of the time but in live it is a little more temperamental. Whilst testing, order emails confirmations were received an hour after the order was placed and in one case, a day after the order was placed.
 - At times, the All Products page can load quite slowly due to the number of items being rendered on it. I explored paginating this view but in doing so, this broke other features such as as sorting and filtering so this was scrapped. Had I been aware of these performance issues in the live project, I would certainly have incorporated pagination into my project earlier on.
+
+### Fixed Bugs
+- Following feedback from CodeInstitute post initial submission, it was highlighted to me that the Account Registration was not working that trying to create a new account on the site results in a 500 server error. I run my development server and began trying to identify the issue. It was clear very quickly what was causing this. In settings.py, I had tried to remain PEP-8 compliant by ensuring that lines were no longer than 79 Characters. Whilst attempting to do so, I mistakenly used a '\' to break the allauth password validation instead of wrapping the line in parenthesis.
+
+Was: 
+'django.contrib.auth.password_validation. \
+        UserAttributeSimilarityValidator',
+
+Changed to:
+('django.contrib.auth.password_validation.'
+         'UserAttributeSimilarityValidator'),
 
 ## Deployment
 
