@@ -58,7 +58,6 @@ html{
 }
 
 .home-btn {
-    z-index:9999999;
     position: absolute;
     display: block;
     left: 0;

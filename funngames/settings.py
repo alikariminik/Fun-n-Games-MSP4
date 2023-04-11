@@ -29,7 +29,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 ALLOWED_HOSTS = ["fun-n-games.herokuapp.com", "localhost"]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-alikarimini-funngamesms-ylyi64ioxyy.ws-eu88.gitpod.io']
+    'https://8000-alikarimini-funngamesms-1h7rfy76fjl.ws-eu93.gitpod.io']
 
 # Application definition
 
@@ -156,8 +156,7 @@ else:
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
-        'django.contrib.auth.password_validation. \
-        UserAttributeSimilarityValidator',
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME':
