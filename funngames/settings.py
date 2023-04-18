@@ -29,7 +29,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 ALLOWED_HOSTS = ["fun-n-games.herokuapp.com", "localhost"]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-alikarimini-funngamesms-1h7rfy76fjl.ws-eu93.gitpod.io']
+    'https://8000-alikarimini-funngamesms-1h7rfy76fjl.ws-eu94.gitpod.io']
 
 # Application definition
 
