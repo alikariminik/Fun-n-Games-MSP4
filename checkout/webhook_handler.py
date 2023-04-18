@@ -68,7 +68,7 @@ class StripeWH_Handler:
             if save_info:
                 profile.default_phone_number = \
                     shipping_details.phone,
-                profile.default_email = shipping_details.email,
+                profile.default_email = billing_details.email,
                 profile.default_street_address1 = \
                     shipping_details.address.line1,
                 profile.default_street_address2 = \
