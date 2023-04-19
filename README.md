@@ -264,7 +264,7 @@ When starting out, I had planned to allow for users to register accounts through
 ### Products
 #### Product 
 -   uniq_id =IntegerField(null=True, blank=True)
--   name =254)
+-   name = Character Field which stores product name.
 -   category = A many-to-many relationship with the Category model
 -   sub_category1 = Character Field. Initial plans to incorporate sub-categories of products but this was mot implemented.
 -   sub_category2 = Character Field. Initial plans to incorporate sub-categories of products but this was mot implemented.
@@ -314,7 +314,7 @@ Vigorous testing was conducted throughout the development process to ensure that
 - At times, the All Products page can load quite slowly due to the number of items being rendered on it. I explored paginating this view but in doing so, this broke other features such as as sorting and filtering so this was scrapped. Had I been aware of these performance issues in the live project, I would certainly have incorporated pagination into my project earlier on.
 
 ### Fixed Bugs
-- Following feedback from CodeInstitute post initial submission, it was highlighted to me that the Account Registration was not working that trying to create a new account on the site results in a 500 server error. I run my development server and began trying to identify the issue. It was clear very quickly what was causing this. In settings.py, I had tried to remain PEP-8 compliant by ensuring that lines were no longer than 79 Characters. Whilst attempting to do so, I mistakenly used a '\' to break the allauth password validation instead of wrapping the line in parenthesis.
+- Following feedback from CodeInstitute post initial submission, it was highlighted to me that the Account Registration was not working that trying to create a new account on the site results in a 500 server error. I run my development server and began trying to identify the issue. It was clear very quickly what was causing this. On line 158 in settings.py, I had tried to remain PEP-8 compliant by ensuring that lines were no longer than 79 Characters. Whilst attempting to do so, I mistakenly used a '\' to break up the line length. This inadvertently broke the allauth password validation which fundamentally broke the entire allauth functionality except for logging into previously existing accounts. This was fixed by wrapping the Value for this line in parenthesis. Following implementation of this fix, as well as minor changes to UX (editing of z-index for "Shop our Sale!" on home page), the User Stories and validator testing were re-tested again. 
 
 Was: 
 'django.contrib.auth.password_validation. \
